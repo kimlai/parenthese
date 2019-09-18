@@ -1,0 +1,16 @@
+<div id="react-root" />
+
+<script>
+    var csrfToken = "<%= Plug.CSRFProtection.get_csrf_token_for(Routes.project_path(@conn, :create)) %>"
+    var action = "<%= Routes.project_path(@conn, :create) %>"
+    var method = "post"
+    var project = {};
+    var changes = <%= raw Jason.encode!(@changeset.changes) %>
+    <%= if @changeset.action do %>
+        var errors = <%= raw errors_as_json(@changeset) %>
+    <% else %>
+        var errors = {}
+    <% end %>
+</script>
+
+<script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/adminProject.js") %>"></script>

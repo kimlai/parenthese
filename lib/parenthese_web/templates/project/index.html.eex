@@ -1,0 +1,43 @@
+<div class="text-center mb-8 md:text-left md:my-12">
+    <%= link "Nouveau Projet",
+        to: Routes.project_path(@conn, :new),
+        class: "uppercase bg-teal-600 hover:bg-teal-400 rounded-full px-5 py-3 text-white font-bold"
+    %>
+</div>
+
+<table>
+  <thead class="">
+    <tr>
+      <th></th>
+      <th class="hidden md:table-cell text-left px-4 py-4">Titre</th>
+      <th class="hidden md:table-cell text-left px-4 py-4">Résumé</th>
+      <th class="hidden lg:table-cell text-left px-4 py-4">Lieu</th>
+      <th class="hidden lg:table-cell text-left px-4 py-4">Status</th>
+      <th class="hidden lg:table-cell text-left px-4 py-4">Date</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for project <- @projects do %>
+    <tr class="border-t hover:bg-gray-100">
+      <td class="px-4 py-4">
+        <img class="w-20 h-20" src="<%= project.cover_url %>/400x400.jpg" />
+      </td>
+      <td class="px-4 py-4"><%= project.title %></td>
+      <td class="hidden md:table-cell px-4 py-4 md:max-w-sm lg:max-w-md truncate">
+        <%= project.short_description %>
+      </td>
+      <td class="hidden lg:table-cell px-4 py-4"><%= project.location %></td>
+      <td class="hidden lg:table-cell px-4 py-4"><%= project.status %></td>
+      <td class="hidden lg:table-cell px-4 py-4"><%= project.date %></td>
+
+      <td class="px-4 py-4">
+        <%= link "Éditer", to: Routes.project_path(@conn, :edit, project), class: "px-2" %>
+        <%= link "Supprimer", to: Routes.project_path(@conn, :delete, project), method: :delete, data: [confirm: "Êtes-vous sûr ?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
