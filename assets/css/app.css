@@ -4,6 +4,14 @@
 
 @tailwind components;
 
+h1 {
+  font-family: "futura-pt";
+}
+
+body {
+  font-family: "Proxima-Nova";
+}
+
 /* Algolia places */
 .ap-input {
   @apply border-gray-300 px-3 py-2 rounded-sm bg-gray-100;
