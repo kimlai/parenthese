@@ -12,24 +12,24 @@
       <th class="hidden md:table-cell text-left px-4 py-4">Titre</th>
       <th class="hidden md:table-cell text-left px-4 py-4">Résumé</th>
       <th class="hidden lg:table-cell text-left px-4 py-4">Lieu</th>
-      <th class="hidden lg:table-cell text-left px-4 py-4">Status</th>
+      <th class="hidden lg:table-cell text-left px-4 py-4">Catégorie</th>
       <th class="hidden lg:table-cell text-left px-4 py-4">Date</th>
-
-      <th></th>
     </tr>
   </thead>
   <tbody>
 <%= for project <- @projects do %>
     <tr class="border-t hover:bg-gray-100">
-      <td class="px-4 py-4">
-        <img class="w-20 h-20" src="<%= project.cover_url %>/400x400.jpg" />
+      <td class="px-4 py-4 w-20 h-20">
+        <a href="<%= Routes.project_path(@conn, :show, project) %>">
+          <img src="<%= project.cover_url %>/400x400.jpg" />
+        </a>
       </td>
-      <td class="px-4 py-4"><%= project.title %></td>
+      <td class="px-4 py-4 font-semibold"><%= project.title %></td>
       <td class="hidden md:table-cell px-4 py-4 md:max-w-sm lg:max-w-md truncate">
         <%= project.short_description %>
       </td>
       <td class="hidden lg:table-cell px-4 py-4"><%= project.location %></td>
-      <td class="hidden lg:table-cell px-4 py-4"><%= project.status %></td>
+      <td class="hidden lg:table-cell px-4 py-4"><%= project.category %></td>
       <td class="hidden lg:table-cell px-4 py-4"><%= project.date %></td>
 
       <td class="px-4 py-4">

@@ -18,7 +18,9 @@ defmodule Parenthese.Projects do
 
   """
   def list_projects do
-    Repo.all(Project)
+    Project
+    |> order_by(desc: :id)
+    |> Repo.all()
   end
 
   @doc """

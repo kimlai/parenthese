@@ -14,7 +14,7 @@
 <button class="text-orange-500 font-semibold text-sm uppercase" id="more" type="button">+ d'infos</button>
 </div>
 <div class="md:flex items-start">
-  <div class="md:w-56 border border-gray-500 py-4 px-8 md:mr-8 mb-6 min-width-32">
+  <div class="md:w-72 border border-gray-500 py-4 px-8 md:mr-8 mb-6 min-width-32">
     <table>
       <tr>
         <th class="text-right pr-4 pb-2">Projet</th>
