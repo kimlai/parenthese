@@ -1,48 +1,59 @@
-<h1>Show Project</h1>
-
-<ul>
-
-  <li>
-    <strong>Title:</strong>
+<header class="border-t border-b border-gray-500">
+  <h1 class="text-center text-3xl pt-8 pb-4 uppercase">
     <%= @project.title %>
-  </li>
+  </h1>
+  <div class="text-center pb-6 text-xl">
+    <%= @project.short_description %>
+  </div>
+</header>
 
-  <li>
-    <strong>Description:</strong>
-    <%= @project.description %>
-  </li>
-
-  <li>
-    <strong>Flickr:</strong>
-    <%= @project.flickr_id %>
-  </li>
-
-  <li>
-    <strong>Youtube ids:</strong>
-    <%= @project.youtube_ids %>
-  </li>
-
-  <li>
-    <strong>Vimeo ids:</strong>
-    <%= @project.vimeo_ids %>
-  </li>
-
-  <li>
-    <strong>Location:</strong>
-    <%= @project.location %>
-  </li>
-
-  <li>
-    <strong>Status:</strong>
-    <%= @project.status %>
-  </li>
-
-  <li>
-    <strong>Date:</strong>
-    <%= @project.date %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.project_path(@conn, :edit, @project) %></span>
-<span><%= link "Back", to: Routes.project_path(@conn, :index) %></span>
+<div id="description" class="pt-6 h-24 mb-2 overflow-y-hidden">
+  <%= @project.description %>
+</div>
+<div class="text-center mb-6">
+<button class="text-orange-500 font-semibold text-sm uppercase" id="more" type="button">+ d'infos</button>
+</div>
+<div class="md:flex items-start">
+  <div class="md:w-56 border border-gray-500 py-4 px-8 md:mr-8 mb-6 min-width-32">
+    <table>
+      <tr>
+        <th class="text-right pr-4 pb-2">Projet</th>
+        <td class="pb-2"><%= @project.category %></td>
+      </tr>
+      <tr>
+        <th class="text-right pr-4 pb-2">Date</th>
+        <td class="pb-2"><%= @project.date %></td>
+      </tr>
+      <tr>
+        <th class="text-right pr-4 pb-2">Lieu</th>
+        <td class="pb-2"><%= @project.location %></td>
+      </tr>
+    </table>
+  </div>
+  <ul>
+    <%= for photo <- @photos do %>
+      <li class="mb-6">
+        <img src="<%= flickr_url(photo) %>" />
+      </li>
+    <% end %>
+  </ul>
+</div>
+<script>
+  const seeMore = e => {
+    const description = document.getElementById("description");
+    e.target.innerHTML = "Voir moins";
+    description.setAttribute("class", "pt-6 mb-2");
+    e.target.removeEventListener("click", seeMore);
+    e.target.addEventListener("click", seeLess);
+  };
+  const seeLess = e => {
+    const description = document.getElementById("description");
+    e.target.innerHTML = "+ d'infos";
+    description.setAttribute("class", "pt-6 h-24 mb-2 overflow-y-hidden");
+    description.scrollIntoView({ block: "nearest" });
+    e.target.removeEventListener("click", seeLess);
+    e.target.addEventListener("click", seeMore);
+  }
+  const button = document.getElementById("more");
+  button.addEventListener("click", seeMore);
+</script>

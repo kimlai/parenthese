@@ -16,4 +16,10 @@ defmodule ParentheseWeb.ProjectView do
     # as a JSON object. So we just pass it forward.
     Jason.encode!(translate_errors(changeset))
   end
+
+  def flickr_url(photo) do
+    "http://farm#{photo["farm"]}.staticflickr.com/#{photo["server"]}/#{photo["id"]}_#{
+      photo["secret"]
+    }_b.jpg"
+  end
 end

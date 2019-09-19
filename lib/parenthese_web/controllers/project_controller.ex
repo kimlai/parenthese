@@ -30,7 +30,33 @@ defmodule ParentheseWeb.ProjectController do
 
   def show(conn, %{"id" => id}) do
     project = Projects.get_project!(id)
-    render(conn, "show.html", project: project)
+
+    photos =
+      with {:ok, 200, _, client_ref} <- fetch_flickr_album(project.flickr_id),
+           {:ok, body} <- :hackney.body(client_ref),
+           {:ok, %{"stat" => "ok", "photoset" => photoset}} <- Jason.decode(body) do
+        photoset["photo"]
+      end
+
+    render(conn, "show.html", project: project, photos: photos)
+  end
+
+  defp fetch_flickr_album(id) do
+    params = [
+      api_key: System.get_env("FLICKR_API_KEY"),
+      method: "flickr.photosets.getPhotos",
+      photoset_id: id,
+      format: "json",
+      nojsoncallback: 1
+    ]
+
+    :hackney.request(
+      :get,
+      "https://api.flickr.com/services/rest?#{URI.encode_query(params)}",
+      [],
+      "",
+      follow_redirect: true
+    )
   end
 
   def edit(conn, %{"id" => id}) do
