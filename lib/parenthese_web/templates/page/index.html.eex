@@ -1,7 +1,27 @@
+<ul class="flex justify-center">
+  <li data-category="all" class="px-4 uppercase hover:text-orange-500 cursor-pointer">
+    Tout
+  </li>
+  <li data-category="archi" class="px-4 uppercase hover:text-orange-500 cursor-pointer">
+    Archi
+  </li>
+  <li data-category="microArchi" class="px-4 uppercase hover:text-orange-500 cursor-pointer">
+    Micro-Archi
+  </li>
+  <li data-category="scenography" class="px-4 uppercase hover:text-orange-500 cursor-pointer">
+    Scénographie
+  </li>
+  <li data-category="pedagogy" class="px-4 uppercase hover:text-orange-500 cursor-pointer">
+    Pédagogie
+  </li>
+</ul>
 <section>
-  <ul class="flex flex-wrap">
+  <ul id="project-list" class="flex flex-wrap">
     <%= for project <- @projects do %>
-      <li class="p-4 sm:w-1/2 md:w-1/3 lg:w-1/4 hover:text-orange-500">
+      <li
+        data-project-category="<%= project.category %>"
+        class="project p-4 sm:w-1/2 md:w-1/3 lg:w-1/4 hover:text-orange-500"
+      >
         <a href="<%= Routes.project_path(@conn, :show, project) %>">
           <div class="border">
             <img src="<%= project.cover_url %>/400x400.jpg" />
@@ -14,3 +34,25 @@
     <% end %>
   </ul>
 </section>
+
+<script>
+  document.addEventListener("click", e => {
+    const el = e.target;
+    const category = el.getAttribute("data-category");
+    if (!category) {
+      return;
+    }
+    const list = document.getElementById("project-list");
+    const projects = document.getElementsByClassName("project");
+    for (var i = 0; i < projects.length; i++) {
+      var project = projects[i];
+      if (category === "all" || project.getAttribute("data-project-category") === category) {
+        project.classList.add("display-block");
+        project.classList.remove("hidden");
+      } else {
+        project.classList.add("hidden");
+        project.classList.remove("display-block");
+      }
+    }
+  });
+</script>
