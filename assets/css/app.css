@@ -12,6 +12,133 @@ body {
   font-family: "Proxima-Nova";
 }
 
+#logo {
+  position: relative;
+  width: 110px;
+  height: 76px;
+}
+#logo div {
+  position: absolute;
+  background: black;
+}
+#logo-left {
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 100%;
+}
+#logo-top-left {
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 8px;
+}
+#logo-bottom-left {
+  bottom: 0;
+  left: 0;
+  width: 20px;
+  height: 8px;
+}
+#logo-right {
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 100%;
+}
+#logo-top-right {
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 8px;
+}
+#logo-bottom-right {
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 8px;
+}
+#logo-dot-1 {
+  bottom: 16px;
+  left: 28px;
+  width: 12px;
+  height: 12px;
+}
+.logo-loading #logo-dot-1 {
+  animation: 1.2s dot1 infinite;
+}
+#logo-dot-2 {
+  bottom: 16px;
+  left: 49px;
+  width: 12px;
+  height: 12px;
+}
+.logo-loading #logo-dot-2 {
+  animation: 1.2s dot2 infinite;
+}
+#logo-dot-3 {
+  bottom: 16px;
+  right: 28px;
+  width: 12px;
+  height: 12px;
+}
+.logo-loading #logo-dot-3 {
+  animation: 1.2s dot3 infinite;
+}
+
+@keyframes dot1 {
+  O% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes dot2 {
+  O% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes dot3 {
+  O% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 /* Algolia places */
 .ap-input {
   @apply border-gray-300 px-3 py-2 rounded-sm bg-gray-100;
