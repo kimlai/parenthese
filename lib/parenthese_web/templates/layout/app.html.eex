@@ -10,9 +10,19 @@
     <link rel="stylesheet" href="https://use.typekit.net/nqt3mmo.css">
   </head>
   <body class="bg-gray-200">
-    <main role="main" class="container mx-auto my-8 px-6">
-      <div class="flex justify-center pb-6">
-        <div id="logo">
+    <main role="main" class="container mx-auto pt-6 mb-8 px-6">
+      <div class="flex justify-between md:justify-center pb-4 md:pb-6">
+        <button id="sidebar-open" type="button" class="md:hidden">
+          <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+          </svg>
+        </button>
+        <button id="sidebar-close" type="button" class="hidden md:hidden">
+          <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"></path>
+          </svg>
+        </button>
+        <div id="logo" class="hidden md:block">
           <div id="logo-left"></div>
           <div id="logo-top-left"></div>
           <div id="logo-bottom-left"></div>
@@ -24,29 +34,29 @@
           <div id="logo-dot-3"></div>
         </div>
       </div>
-      <nav class="border-t border-b border-gray-500">
-        <ul class="flex justify-center font-futura uppercase tracking-wide">
-          <li class="p-4 hover:text-orange-500">
+      <nav id="navigation" class="hidden md:block border-t border-b border-gray-500 font-futura uppercase tracking-wide">
+        <ul class="flex flex-col md:flex-row bg-gray-200 justify-center">
+          <li class="py-4 md:p-4 hover:text-orange-500">
             <a href="<%= Routes.page_path(@conn, :about) %>">
               À propos
             </a>
           </li>
-          <li class="p-4 hover:text-orange-500">
+          <li class="py-4 md:p-4 hover:text-orange-500">
             <a href="<%= Routes.page_path(@conn, :index) %>">
               Projets
             </a>
           </li>
-          <li class="p-4 hover:text-orange-500">
+          <li class="py-4 md:p-4 hover:text-orange-500">
             <a href="">
               Carte
             </a>
           </li>
-          <li class="p-4 hover:text-orange-500">
+          <li class="py-4 md:p-4 hover:text-orange-500">
             <a href="">
               Presse
             </a>
           </li>
-          <li class="p-4 hover:text-orange-500">
+          <li class="py-4 md:p-4 hover:text-orange-500">
             <a href="<%= Routes.page_path(@conn, :contact) %>">
               Contact
             </a>
@@ -58,5 +68,19 @@
       <%= render @view_module, @view_template, assigns %>
     </main>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+    <script>
+      const hide = el => el.classList.add("hidden");
+      const show = el => el.classList.remove("hidden");
+      document.getElementById("sidebar-open").addEventListener("click", e => {
+        hide(document.getElementById("sidebar-open"));
+        show(document.getElementById("sidebar-close"));
+        show(document.getElementById("navigation"));
+      });
+      document.getElementById("sidebar-close").addEventListener("click", e => {
+        show(document.getElementById("sidebar-open"));
+        hide(document.getElementById("sidebar-close"));
+        hide(document.getElementById("navigation"));
+      });
+    </script>
   </body>
 </html>

@@ -1,17 +1,17 @@
-<ul class="flex justify-center font-futura pt-4 text-sm tracking-wide">
-  <li data-category="all" class="px-4 uppercase hover:text-orange-500 cursor-pointer">
+<ul class="flex flex-wrap justify-center font-futura py-2 md:pt-4 md:pb-0 text-sm tracking-wide">
+  <li data-category="all" class="py-2 px-4 md:py-0 uppercase hover:text-orange-500 cursor-pointer">
     Tout
   </li>
-  <li data-category="archi" class="px-4 uppercase hover:text-orange-500 cursor-pointer">
+  <li data-category="archi" class="py-2 px-4 md:py-0 uppercase hover:text-orange-500 cursor-pointer">
     Archi
   </li>
-  <li data-category="microArchi" class="px-4 uppercase hover:text-orange-500 cursor-pointer">
+  <li data-category="microArchi" class="py-2 px-4 md:py-0 uppercase hover:text-orange-500 cursor-pointer">
     Micro-Archi
   </li>
-  <li data-category="scenography" class="px-4 uppercase hover:text-orange-500 cursor-pointer">
+  <li data-category="scenography" class="py-2 px-4 md:py-0 uppercase hover:text-orange-500 cursor-pointer">
     Scénographie
   </li>
-  <li data-category="pedagogy" class="px-4 uppercase hover:text-orange-500 cursor-pointer">
+  <li data-category="pedagogy" class="py-2 px-4 md:py-0 uppercase hover:text-orange-500 cursor-pointer">
     Pédagogie
   </li>
 </ul>

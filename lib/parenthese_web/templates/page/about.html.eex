@@ -3,7 +3,7 @@
     Le collectif
   </h1>
 </header>
-<section id="about">
+<section id="about" class="md:text-justify">
   <p class="mb-4">
     Formé en 2012 par un groupe d’amis et architectes, le Collectif Parenthèse constitue un cadre de réflexion et d’expérimentation autour des pratiques de l’espace et de la ville. La volonté de créer différemment, questionner les disciplines et les métiers de l’architecture ainsi que ses méthodes de travail sont à l’origine de ce regroupement.
   </p>
