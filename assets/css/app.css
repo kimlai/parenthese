@@ -139,6 +139,12 @@ body {
   }
 }
 
+#about {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: justify;
+}
+
 /* Algolia places */
 .ap-input {
   @apply border-gray-300 px-3 py-2 rounded-sm bg-gray-100;

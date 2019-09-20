@@ -17,6 +17,8 @@ defmodule ParentheseWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/about", PageController, :about
+    get "/contact", PageController, :contact
     resources "/projects", ProjectController
   end
 

@@ -1,0 +1,19 @@
+<header>
+  <h1 class="text-center text-3xl pt-8 pb-8 uppercase tracking-wide font-futura">
+    Le collectif
+  </h1>
+</header>
+<section id="about">
+  <p class="mb-4">
+    Formé en 2012 par un groupe d’amis et architectes, le Collectif Parenthèse constitue un cadre de réflexion et d’expérimentation autour des pratiques de l’espace et de la ville. La volonté de créer différemment, questionner les disciplines et les métiers de l’architecture ainsi que ses méthodes de travail sont à l’origine de ce regroupement.
+  </p>
+  <p class="mb-4">
+    L’élaboration de chacun des projets du collectif suit un processus complet, de l’idée au dessin et de la conception à la réalisation. Nous cherchons à développer une approche interactive, humaine et responsable de la création par le biais de tous les médiums disponibles qui suscitent notre intérêt. Architecture, scénographie, installations, graphisme, design, vidéo, photographie… sont autant de disciplines créatives où notre imaginaire et nos réflexions peuvent s’exprimer. Cette énergie se concrétise par l’élaboration d’installations éphémères, de mobilier urbain, de projections, de design d’objet mais aussi de créations purement artistiques.
+  </p>
+  <p class="mb-4">
+    L’espace public est à tous, la culture pour chacun, nous voulons offrir aux usagers d’une architecture, d’un quartier, d’un évènement, une expérience visuelle, physique et sociale.
+  </p>
+  <p class="mb-4">
+    Maroua Bahij / Joris Bengounia / Rémi Chaudagne / Jean-Baptiste François / Virgile Ponsoye / Fabien Salhen / Rajh Sevagamy / Louis-Phong Viret 
+  </p>
+</section>

@@ -27,7 +27,7 @@
       <nav class="border-t border-b border-gray-500">
         <ul class="flex justify-center font-futura uppercase tracking-wide">
           <li class="p-4 hover:text-orange-500">
-            <a href="">
+            <a href="<%= Routes.page_path(@conn, :about) %>">
               À propos
             </a>
           </li>
@@ -47,7 +47,7 @@
             </a>
           </li>
           <li class="p-4 hover:text-orange-500">
-            <a href="">
+            <a href="<%= Routes.page_path(@conn, :contact) %>">
               Contact
             </a>
           </li>
