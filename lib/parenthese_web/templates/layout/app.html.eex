@@ -11,7 +11,7 @@
   </head>
   <body class="bg-gray-200">
     <main role="main" class="container mx-auto my-8 px-6">
-      <div class="flex justify-center pb-8">
+      <div class="flex justify-center pb-6">
         <div id="logo">
           <div id="logo-left"></div>
           <div id="logo-top-left"></div>
@@ -24,6 +24,35 @@
           <div id="logo-dot-3"></div>
         </div>
       </div>
+      <nav class="border-t border-b border-gray-500">
+        <ul class="flex justify-center font-futura uppercase tracking-wide">
+          <li class="p-4 hover:text-orange-500">
+            <a href="">
+              À propos
+            </a>
+          </li>
+          <li class="p-4 hover:text-orange-500">
+            <a href="<%= Routes.page_path(@conn, :index) %>">
+              Projets
+            </a>
+          </li>
+          <li class="p-4 hover:text-orange-500">
+            <a href="">
+              Carte
+            </a>
+          </li>
+          <li class="p-4 hover:text-orange-500">
+            <a href="">
+              Presse
+            </a>
+          </li>
+          <li class="p-4 hover:text-orange-500">
+            <a href="">
+              Contact
+            </a>
+          </li>
+        </ul>
+      </nav>
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= render @view_module, @view_template, assigns %>

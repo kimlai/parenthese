@@ -1,4 +1,4 @@
-<header class="border-t border-b border-gray-500">
+<header class="border-b border-gray-500">
   <h1 class="text-center text-3xl pt-8 pb-4 uppercase tracking-wide">
     <%= @project.title %>
   </h1>

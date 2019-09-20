@@ -1,4 +1,4 @@
-<ul class="flex justify-center">
+<ul class="flex justify-center font-futura pt-4 text-sm tracking-wide">
   <li data-category="all" class="px-4 uppercase hover:text-orange-500 cursor-pointer">
     Tout
   </li>

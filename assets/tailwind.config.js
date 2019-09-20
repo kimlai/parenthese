@@ -1,9 +1,7 @@
 module.exports = {
   theme: {
-    extend: {
-      spacing: {
-        "72": "18rem"
-      }
+    fontFamily: {
+      futura: ["futura-pt"]
     }
   },
   variants: {
