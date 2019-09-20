@@ -22,4 +22,9 @@ defmodule ParentheseWeb.ProjectView do
       photo["secret"]
     }_b.jpg"
   end
+
+  def translate_category("microArchi"), do: "Micro-Architecture"
+  def translate_category("archi"), do: "Architecture"
+  def translate_category("scenography"), do: "Scénographie"
+  def translate_category("pedagogy"), do: "Pédagogie"
 end
