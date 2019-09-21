@@ -12,6 +12,7 @@
 </div>
 <div class="text-center mb-6">
 <button class="text-orange-500 font-semibold text-sm uppercase" id="more" type="button">+ d'infos</button>
+<button class="text-orange-500 font-semibold text-sm uppercase hidden" id="less" type="button">Voir moins</button>
 </div>
 <div class="md:flex items-start">
   <div class="md:w-64 border border-gray-500 py-4 px-6 md:mr-8 mb-6 shadow">
@@ -27,22 +28,3 @@
     <% end %>
   </ul>
 </div>
-<script>
-  const seeMore = e => {
-    const description = document.getElementById("description");
-    e.target.innerHTML = "Voir moins";
-    description.setAttribute("class", "pt-6 mb-2");
-    e.target.removeEventListener("click", seeMore);
-    e.target.addEventListener("click", seeLess);
-  };
-  const seeLess = e => {
-    const description = document.getElementById("description");
-    e.target.innerHTML = "+ d'infos";
-    description.setAttribute("class", "pt-6 h-24 mb-2 overflow-y-hidden");
-    description.scrollIntoView({ block: "nearest" });
-    e.target.removeEventListener("click", seeLess);
-    e.target.addEventListener("click", seeMore);
-  }
-  const button = document.getElementById("more");
-  button.addEventListener("click", seeMore);
-</script>

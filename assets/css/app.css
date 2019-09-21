@@ -139,9 +139,44 @@ body {
   }
 }
 
+@keyframes content-loading {
+  from {
+    margin-top: 0;
+    opacity: 1;
+  }
+  to {
+    margin-top: -20px;
+    opacity: 0;
+  }
+}
+
+@keyframes content-loaded {
+  from {
+    margin-top: -20px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+.content-loading #content {
+  animation: 0.3s content-loading;
+  animation-fill-mode: forwards;
+}
+.content-loaded #content {
+  animation: 0.3s content-loaded;
+  animation-fill-mode: forwards;
+}
+
 #about {
   max-width: 700px;
   margin: 0 auto;
+}
+
+.projectList-project img {
+  min-height: 270px;
 }
 
 /* Algolia places */

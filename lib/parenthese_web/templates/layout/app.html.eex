@@ -10,75 +10,190 @@
   </head>
   <body class="bg-gray-200">
     <main role="main" class="container mx-auto pt-6 mb-8 px-6">
-      <div class="flex justify-between md:justify-center pb-4 md:pb-6">
-        <button id="sidebar-open" type="button" class="md:hidden">
-          <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-          </svg>
-        </button>
-        <button id="sidebar-close" type="button" class="hidden md:hidden">
-          <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-            <path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"></path>
-          </svg>
-        </button>
-        <div id="logo" class="hidden md:block">
-          <div id="logo-left"></div>
-          <div id="logo-top-left"></div>
-          <div id="logo-bottom-left"></div>
-          <div id="logo-right"></div>
-          <div id="logo-top-right"></div>
-          <div id="logo-bottom-right"></div>
-          <div id="logo-dot-1"></div>
-          <div id="logo-dot-2"></div>
-          <div id="logo-dot-3"></div>
+      <div class="bg-gray-200 z-10 relative">
+        <div class="flex justify-between md:justify-center pb-4 md:pb-6">
+          <button id="sidebar-open" type="button" class="md:hidden">
+            <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+            </svg>
+          </button>
+          <button id="sidebar-close" type="button" class="hidden md:hidden">
+            <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"></path>
+            </svg>
+          </button>
+          <div id="logo" class="hidden md:block">
+            <div id="logo-left"></div>
+            <div id="logo-top-left"></div>
+            <div id="logo-bottom-left"></div>
+            <div id="logo-right"></div>
+            <div id="logo-top-right"></div>
+            <div id="logo-bottom-right"></div>
+            <div id="logo-dot-1"></div>
+            <div id="logo-dot-2"></div>
+            <div id="logo-dot-3"></div>
+          </div>
         </div>
+        <nav id="navigation" class="hidden absolute w-full md:relative md:block border-t border-b border-gray-500 font-futura uppercase tracking-wide">
+          <ul class="flex flex-col md:flex-row bg-gray-200 justify-center">
+            <li class="py-4 md:p-4 hover:text-orange-500">
+              <a href="<%= Routes.page_path(@conn, :about) %>">
+                À propos
+              </a>
+            </li>
+            <li class="py-4 md:p-4 hover:text-orange-500">
+              <a href="<%= Routes.page_path(@conn, :index) %>">
+                Projets
+              </a>
+            </li>
+            <li class="py-4 md:p-4 hover:text-orange-500">
+              <a href="">
+                Carte
+              </a>
+            </li>
+            <li class="py-4 md:p-4 hover:text-orange-500">
+              <a href="">
+                Presse
+              </a>
+            </li>
+            <li class="py-4 md:p-4 hover:text-orange-500">
+              <a href="<%= Routes.page_path(@conn, :contact) %>">
+                Contact
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
-      <nav id="navigation" class="hidden md:block border-t border-b border-gray-500 font-futura uppercase tracking-wide">
-        <ul class="flex flex-col md:flex-row bg-gray-200 justify-center">
-          <li class="py-4 md:p-4 hover:text-orange-500">
-            <a href="<%= Routes.page_path(@conn, :about) %>">
-              À propos
-            </a>
-          </li>
-          <li class="py-4 md:p-4 hover:text-orange-500">
-            <a href="<%= Routes.page_path(@conn, :index) %>">
-              Projets
-            </a>
-          </li>
-          <li class="py-4 md:p-4 hover:text-orange-500">
-            <a href="">
-              Carte
-            </a>
-          </li>
-          <li class="py-4 md:p-4 hover:text-orange-500">
-            <a href="">
-              Presse
-            </a>
-          </li>
-          <li class="py-4 md:p-4 hover:text-orange-500">
-            <a href="<%= Routes.page_path(@conn, :contact) %>">
-              Contact
-            </a>
-          </li>
-        </ul>
-      </nav>
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-      <%= render @view_module, @view_template, assigns %>
+      <div id="content" class="relative z-0">
+        <%= render @view_module, @view_template, assigns %>
+      </div>
     </main>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
     <script>
       const hide = el => el.classList.add("hidden");
       const show = el => el.classList.remove("hidden");
-      document.getElementById("sidebar-open").addEventListener("click", e => {
+      const openNavigation = () => {
         hide(document.getElementById("sidebar-open"));
         show(document.getElementById("sidebar-close"));
         show(document.getElementById("navigation"));
-      });
-      document.getElementById("sidebar-close").addEventListener("click", e => {
+      };
+      const closeNavigation = () => {
         show(document.getElementById("sidebar-open"));
         hide(document.getElementById("sidebar-close"));
         hide(document.getElementById("navigation"));
+      };
+      document.getElementById("sidebar-open").addEventListener("click", openNavigation);
+      document.getElementById("sidebar-close").addEventListener("click", closeNavigation);
+
+      const closestLink = el => {
+        while(el) {
+          if (el.tagName === "A") {
+            return el;
+          } else {
+            el = el.parentElement;
+          }
+        }
+
+        return el;
+      }
+
+      const navigate = url => {
+        document.body.classList.remove("content-loaded");
+        document.body.classList.add("content-loading");
+        document.body.classList.add("logo-loading");
+
+        let contentLoaded = false;
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+        xhr.repsonseType = "document";
+        xhr.send();
+        xhr.onload = () => {
+          contentLoaded = true;
+          const page = document.createElement("div");
+          page.innerHTML = xhr.response;
+          const content = page.querySelector("#content");
+          document.getElementById("content").innerHTML = content.innerHTML;
+          document.body.classList.add("content-loaded");
+          document.body.classList.remove("content-loading");
+          setTimeout(() => {
+            document.body.classList.remove("logo-loading");
+          }, 1200);
+        };
+        setTimeout(() => {
+          if (contentLoaded === true) {
+            document.body.classList.remove("logo-loading");
+          }
+        }, 1200);
+      };
+
+      document.addEventListener("click", e => {
+        if (!window.history) {
+          return;
+        }
+        const link = closestLink(e.target);
+        if (!link) {
+          return;
+        }
+        e.preventDefault();
+        closeNavigation();
+
+        history.pushState(null, null, link.getAttribute("href"));
+        navigate(link.getAttribute("href"));
+      });
+
+      window.addEventListener("popstate", e => {
+        navigate(document.location.pathname);
+      });
+
+      const seeMore = e => {
+        const description = document.getElementById("description");
+        e.target.classList.add("hidden");
+        document.getElementById("less").classList.remove("hidden");
+        description.classList.remove("overflow-y-hidden");
+        description.classList.remove("h-24");
+      };
+      const seeLess = e => {
+        const description = document.getElementById("description");
+        e.target.classList.add("hidden");
+        document.getElementById("more").classList.remove("hidden");
+        description.classList.add("overflow-y-hidden");
+        description.classList.add("h-24");
+        description.scrollIntoView({ block: "nearest" });
+      }
+      document.addEventListener("click", e => {
+        if (e.target.id !== "more") {
+          return;
+        }
+        seeMore(e);
+      });
+      document.addEventListener("click", e => {
+        if (e.target.id !== "less") {
+          return;
+        }
+        seeLess(e);
+      });
+
+      document.addEventListener("click", e => {
+        const el = e.target;
+        const category = el.getAttribute("data-category");
+        if (!category) {
+          return;
+        }
+        const list = document.getElementById("project-list");
+        const projects = document.getElementsByClassName("project");
+        for (var i = 0; i < projects.length; i++) {
+          var project = projects[i];
+          if (category === "all" || project.getAttribute("data-project-category") === category) {
+            project.classList.add("display-block");
+            project.classList.remove("hidden");
+          } else {
+            project.classList.add("hidden");
+            project.classList.remove("display-block");
+          }
+        }
       });
     </script>
   </body>
