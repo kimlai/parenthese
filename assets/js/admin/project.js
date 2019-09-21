@@ -279,7 +279,7 @@ const Form = () => {
         </div>
       </div>
       <a
-        href="/projects"
+        href="/admin"
         className=" uppercase text-teal-600 hover:text-teal-400 px-5 py-3 font-bold mr-4"
       >
         Annuler

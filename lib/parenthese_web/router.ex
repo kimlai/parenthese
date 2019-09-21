@@ -9,6 +9,10 @@ defmodule ParentheseWeb.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :admin do
+    plug :put_layout, {ParentheseWeb.LayoutView, "admin.html"}
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -19,7 +23,14 @@ defmodule ParentheseWeb.Router do
     get "/", PageController, :index
     get "/about", PageController, :about
     get "/contact", PageController, :contact
-    resources "/projects", ProjectController
+    get "/project/:id", ProjectController, :show
+  end
+
+  scope "/admin", ParentheseWeb do
+    pipe_through [:browser, :admin]
+
+    get "/", ProjectController, :index
+    resources "/projects", ProjectController, except: [:show, :index]
   end
 
   # Other scopes may use custom stacks.
