@@ -144,9 +144,13 @@ body {
     margin-top: 0;
     opacity: 1;
   }
-  to {
+  50% {
     margin-top: -20px;
     opacity: 0;
+  }
+  100% {
+    height: 1vh;
+    overflow-y: hidden;
   }
 }
 
@@ -173,7 +177,7 @@ body {
 }
 
 .content-loading #content {
-  animation: 0.3s content-loading;
+  animation: 0.6s content-loading;
   animation-fill-mode: forwards;
 }
 .content-loaded #content {
