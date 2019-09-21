@@ -20,10 +20,10 @@
     <%= for project <- @projects do %>
       <li
         data-project-category="<%= project.category %>"
-        class="project p-4 sm:w-1/2 md:w-1/3 lg:w-1/4 projectList-project"
+        class="project p-4 sm:w-1/2 md:w-1/3 lg:w-1/4"
       >
         <a href="<%= Routes.project_path(@conn, :show, project) %>" class="hover:text-orange-500">
-          <div class="">
+          <div class="lg:min-h-270px bg-gray-400">
             <img src="<%= project.cover_url %>/400x400.jpg" />
           </div>
           <div class="py-2">

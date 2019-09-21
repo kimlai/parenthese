@@ -196,10 +196,6 @@ body {
   margin: 0 auto;
 }
 
-.projectList-project img {
-  min-height: 270px;
-}
-
 /* Algolia places */
 .ap-input {
   @apply border-gray-300 px-3 py-2 rounded-sm bg-gray-100;
