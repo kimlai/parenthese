@@ -36,31 +36,11 @@
         </div>
         <nav id="navigation" class="hidden absolute w-full md:relative md:block border-t border-b border-gray-500 font-futura uppercase tracking-wide">
           <ul class="flex flex-col md:flex-row bg-gray-200 justify-center">
-            <li class="py-4 md:p-4 hover:text-orange-500">
-              <a href="<%= Routes.page_path(@conn, :about) %>">
-                À propos
-              </a>
-            </li>
-            <li class="py-4 md:p-4 hover:text-orange-500">
-              <a href="<%= Routes.page_path(@conn, :index) %>">
-                Projets
-              </a>
-            </li>
-            <li class="py-4 md:p-4 hover:text-orange-500">
-              <a href="">
-                Carte
-              </a>
-            </li>
-            <li class="py-4 md:p-4 hover:text-orange-500">
-              <a href="">
-                Presse
-              </a>
-            </li>
-            <li class="py-4 md:p-4 hover:text-orange-500">
-              <a href="<%= Routes.page_path(@conn, :contact) %>">
-                Contact
-              </a>
-            </li>
+            <%= navbar_item conn: @conn, action: :about, text: "À propos" %>
+            <%= navbar_item conn: @conn, action: :index, text: "Projets" %>
+            <%= navbar_item conn: @conn, action: :map, text: "Carte" %>
+            <%= navbar_item conn: @conn, action: :publications, text: "Presse" %>
+            <%= navbar_item conn: @conn, action: :contact, text: "Contact" %>
           </ul>
         </nav>
       </div>

@@ -1,15 +1,17 @@
 import { addClass, removeClass, closestLink } from "./dom";
-import { closeNavbar } from "./navbar";
+import { closeNavbar, markActiveLink } from "./navbar";
 
-const navigate = url => {
+const navigate = link => {
   removeClass(document.body, "content-loaded");
   addClass(document.body, "content-loading");
   addClass(document.body, "logo-loading");
 
+  markActiveLink(link.id);
+
   let contentLoaded = false;
 
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", url);
+  xhr.open("GET", link.href);
   xhr.repsonseType = "document";
   xhr.send();
   xhr.onload = () => {
@@ -43,12 +45,19 @@ const startNavigation = () => {
     e.preventDefault();
     closeNavbar();
 
-    history.pushState(null, null, link.getAttribute("href"));
-    navigate(link.getAttribute("href"));
+    history.pushState(
+      { activeLinkId: link.id },
+      null,
+      link.getAttribute("href")
+    );
+    navigate(link);
   });
 
   window.addEventListener("popstate", e => {
-    navigate(document.location.pathname);
+    navigate({
+      href: document.location.pathname,
+      id: e.state && e.state.activeLinkId
+    });
   });
 };
 

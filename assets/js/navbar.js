@@ -1,4 +1,4 @@
-import { show, hide } from "./dom";
+import { show, hide, addClass, removeClass } from "./dom";
 
 export const openNavbar = () => {
   hide(document.getElementById("sidebar-open"));
@@ -10,4 +10,15 @@ export const closeNavbar = () => {
   show(document.getElementById("sidebar-open"));
   hide(document.getElementById("sidebar-close"));
   hide(document.getElementById("navigation"));
+};
+
+export const markActiveLink = id => {
+  const navbarItems = document.getElementsByClassName("navbar-item");
+  for (var i = 0; i < navbarItems.length; i++) {
+    if (navbarItems[i].children[0].id === id) {
+      addClass(navbarItems[i], "font-medium");
+    } else {
+      removeClass(navbarItems[i], "font-medium");
+    }
+  }
 };

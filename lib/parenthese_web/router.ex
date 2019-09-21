@@ -23,6 +23,8 @@ defmodule ParentheseWeb.Router do
     get "/", PageController, :index
     get "/about", PageController, :about
     get "/contact", PageController, :contact
+    get "/carte", PageController, :map
+    get "/publications", PageController, :publications
     get "/project/:id", ProjectController, :show
   end
 

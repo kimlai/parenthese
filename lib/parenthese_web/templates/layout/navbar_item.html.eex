@@ -1,0 +1,7 @@
+<%= if action_name(@conn) == @action do %>
+  <li class="navbar-item py-4 md:p-4 hover:text-orange-500 font-medium">
+<%= else %>
+  <li class="navbar-item py-4 md:p-4 hover:text-orange-500">
+<%= end %>
+  <%= link @text, to: Routes.page_path(@conn, @action), id: @action %>
+</li>
