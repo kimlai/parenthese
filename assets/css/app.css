@@ -161,7 +161,7 @@ body {
   }
 }
 
-@keyframes project-loaded {
+@keyframes content-loaded-title {
   from {
     margin-left: -200px;
     opacity: 0;
@@ -180,14 +180,11 @@ body {
   animation: 0.3s content-loaded;
   animation-fill-mode: forwards;
 }
-.content-loading #project-title {
+.content-loaded h1 {
   opacity: 0;
 }
-.content-loaded #project-title {
-  opacity: 0;
-}
-.content-loaded #project-title {
-  animation: 0.3s project-loaded 0.2s;
+.content-loaded h1 {
+  animation: 0.3s content-loaded-title 0.2s;
   animation-fill-mode: forwards;
 }
 
