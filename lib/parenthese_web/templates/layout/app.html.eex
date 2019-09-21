@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <link rel="stylesheet" href="https://use.typekit.net/nqt3mmo.css">
   </head>
-  <body class="bg-gray-200">
+  <body class="bg-gray-100 text-gray-900">
     <main role="main" class="container mx-auto pt-6 mb-8 px-6">
-      <div class="bg-gray-200 z-10 relative">
+      <div class="bg-gray-100 z-10 relative">
         <div class="flex justify-between md:justify-center pb-4 md:pb-6">
           <button id="sidebar-open" type="button" class="md:hidden">
             <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -34,8 +34,8 @@
             <div id="logo-dot-3"></div>
           </div>
         </div>
-        <nav id="navigation" class="hidden absolute w-full md:relative md:block border-t border-b border-gray-500 font-futura uppercase tracking-wide">
-          <ul class="flex flex-col md:flex-row bg-gray-200 justify-center">
+        <nav id="navigation" class="hidden absolute w-full md:relative md:block border-t border-b border-gray-500 font-futura uppercase tracking-wide text-gray-600 bg-gray-100 pb-20 md:pb-0">
+          <ul class="flex flex-col md:flex-row justify-center">
             <%= navbar_item conn: @conn, action: :about, text: "À propos" %>
             <%= navbar_item conn: @conn, action: :index, text: "Projets" %>
             <%= navbar_item conn: @conn, action: :map, text: "Carte" %>

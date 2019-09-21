@@ -193,6 +193,11 @@ body {
   margin: 0 auto;
 }
 
+.category-filter.active,
+.navbar-item.active {
+  @apply font-medium text-gray-900;
+}
+
 /* Algolia places */
 .ap-input {
   @apply border-gray-300 px-3 py-2 rounded-sm bg-gray-100;

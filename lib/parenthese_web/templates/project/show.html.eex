@@ -1,5 +1,5 @@
 <header class="border-b border-gray-500">
-  <h1 id="project-title" class="text-center text-3xl pt-8 pb-4 uppercase tracking-wide">
+  <h1 id="project-title" class="text-center text-3xl pt-8 pb-4 uppercase tracking-wide font-medium">
     <%= @project.title %>
   </h1>
   <div class="text-center pb-6 text-xl">
@@ -17,8 +17,8 @@
 <div class="md:flex items-start">
   <div class="md:w-64 border border-gray-500 py-4 px-6 md:mr-8 mb-6 shadow">
     <div class="pb-2 font-medium"><%= translate_category(@project.category) %></div>
-    <div class="text-gray-800"><%= @project.date %></div>
-    <div class="text-gray-800"><%= @project.location %></div>
+    <div class="text-gray-700"><%= @project.date %></div>
+    <div class="text-gray-700"><%= @project.location %></div>
   </div>
   <ul>
     <%= for photo <- @photos do %>

@@ -16,9 +16,9 @@ export const markActiveLink = id => {
   const navbarItems = document.getElementsByClassName("navbar-item");
   for (var i = 0; i < navbarItems.length; i++) {
     if (navbarItems[i].children[0].id === id) {
-      addClass(navbarItems[i], "font-medium");
+      addClass(navbarItems[i], "active");
     } else {
-      removeClass(navbarItems[i], "font-medium");
+      removeClass(navbarItems[i], "active");
     }
   }
 };

@@ -1,4 +1,12 @@
-import { show, hide } from "./dom";
+import { show, hide, addClass, removeClass } from "./dom";
+
+const markActiveFilter = e => {
+  const filters = document.getElementsByClassName("category-filter");
+  for (var i = 0; i < filters.length; i++) {
+    removeClass(filters[i], "active");
+  }
+  addClass(e.target, "active");
+};
 
 export const filterProjects = e => {
   const category = e.target.getAttribute("data-category");
@@ -15,4 +23,5 @@ export const filterProjects = e => {
       hide(project);
     }
   }
+  markActiveFilter(e);
 };
