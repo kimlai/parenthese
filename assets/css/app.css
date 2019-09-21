@@ -161,12 +161,33 @@ body {
   }
 }
 
+@keyframes project-loaded {
+  from {
+    margin-left: -200px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
 .content-loading #content {
   animation: 0.3s content-loading;
   animation-fill-mode: forwards;
 }
 .content-loaded #content {
   animation: 0.3s content-loaded;
+  animation-fill-mode: forwards;
+}
+.content-loading #project-title {
+  opacity: 0;
+}
+.content-loaded #project-title {
+  opacity: 0;
+}
+.content-loaded #project-title {
+  animation: 0.3s project-loaded 0.2s;
   animation-fill-mode: forwards;
 }
 
