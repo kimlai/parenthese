@@ -10,13 +10,23 @@ p {
 #map-container {
   position: absolute;
   top: 0;
-  bottom: 0;
+  bottom: 4rem;
   left: 0;
   right: 0;
 }
+@media (min-width: 768px) {
+  #map-container {
+    bottom: 0;
+  }
+}
 
 .navbar-item.active {
-  @apply font-medium text-gray-900;
+  @apply font-medium text-gray-100;
+}
+@media (min-width: 768px) {
+  .navbar-item.active {
+    @apply font-medium text-gray-900;
+  }
 }
 
 @tailwind utilities;

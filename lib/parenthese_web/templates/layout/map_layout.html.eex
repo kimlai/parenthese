@@ -11,20 +11,20 @@
   </head>
   <body class="text-gray-900">
     <div class="w-full font-futura uppercase tracking-wide bg-gray-100">
-      <div id="navigation-sm" class="bg-gray-100 fixed z-10 px-6 pt-6 pb-4 w-full shadow-md">
-        <button id="sidebar-open" type="button" class="md:hidden">
+      <div class="fixed bottom-0 left-0 w-full md:hidden flex justify-between md:justify-center md:pb-4 md:pb-6 border-gray-400 z-40 bg-gray-800 md:bg-gray-100 text-gray-100">
+        <button id="sidebar-open" type="button" class="md:hidden p-6">
           <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
             <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
           </svg>
         </button>
-        <button id="sidebar-close" type="button" class="hidden md:hidden">
+        <button id="sidebar-close" type="button" class="hidden md:hidden p-6">
           <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
             <path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"></path>
           </svg>
         </button>
       </div>
-      <nav id="navigation" class="hidden w-full fixed md:block mt-16 md:m-0 md:p-0 px-6 pb-12 z-10 bg-gray-100 border-b border-gray-500 text-gray-600 shadow-md">
-        <ul class="flex flex-col md:flex-row justify-center">
+      <nav id="navigation" class="hidden fixed top-0 left-0 bottom-0 px-6 pb-20 md:pb-0 z-30 w-full md:relative md:block md:border-t border-b border-gray-500 font-futura uppercase tracking-wide text-gray-600 pb-12 md:pb-0 bg-gray-900 md:bg-gray-100">
+          <ul class="h-full flex flex-col md:flex-row justify-end md:justify-center">
           <%= navbar_item conn: @conn, action: :about, text: "À propos" %>
           <%= navbar_item conn: @conn, action: :index, text: "Projets" %>
           <%= navbar_item conn: @conn, action: :map, text: "Carte", data: [ignore_navigation: true] %>

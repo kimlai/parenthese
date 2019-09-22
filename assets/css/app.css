@@ -197,9 +197,17 @@ body {
   margin: 0 auto;
 }
 
-.category-filter.active,
-.navbar-item.active {
+.category-filter.active {
   @apply font-medium text-gray-900;
+}
+
+.navbar-item.active {
+  @apply font-medium text-gray-100;
+}
+@media (min-width: 768px) {
+  .navbar-item.active {
+    @apply font-medium text-gray-900;
+  }
 }
 
 /* Algolia places */
