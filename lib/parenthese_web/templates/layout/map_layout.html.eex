@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Parenthèse | Carte</title>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/map.css") %>" />
+    <link rel="stylesheet" href="https://use.typekit.net/nqt3mmo.css">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' />
+  </head>
+  <body class="text-gray-900">
+    <div class="w-full font-futura uppercase tracking-wide bg-gray-100">
+      <div id="navigation-sm" class="bg-gray-100 fixed z-10 px-6 pt-6 pb-4 w-full shadow-md">
+        <button id="sidebar-open" type="button" class="md:hidden">
+          <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+          </svg>
+        </button>
+        <button id="sidebar-close" type="button" class="hidden md:hidden">
+          <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"></path>
+          </svg>
+        </button>
+      </div>
+      <nav id="navigation" class="hidden w-full fixed md:block mt-16 md:m-0 md:p-0 px-6 pb-12 z-10 bg-gray-100 border-b border-gray-500 text-gray-600 shadow-md">
+        <ul class="flex flex-col md:flex-row justify-center">
+          <%= navbar_item conn: @conn, action: :about, text: "À propos" %>
+          <%= navbar_item conn: @conn, action: :index, text: "Projets" %>
+          <%= navbar_item conn: @conn, action: :map, text: "Carte", data: [ignore_navigation: true] %>
+          <%= navbar_item conn: @conn, action: :publications, text: "Presse" %>
+          <%= navbar_item conn: @conn, action: :contact, text: "Contact" %>
+        </ul>
+      </nav>
+    </div>
+    <%= render @view_module, @view_template, assigns %>
+    <script>
+      var projects = <%= raw Jason.encode!(@projects) %>
+    </script>
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/map.js") %>"></script>
+  </body>
+</html>

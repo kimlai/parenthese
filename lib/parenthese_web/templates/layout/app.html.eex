@@ -34,11 +34,11 @@
             <div id="logo-dot-3"></div>
           </div>
         </div>
-        <nav id="navigation" class="hidden absolute w-full md:relative md:block border-t border-b border-gray-500 font-futura uppercase tracking-wide text-gray-600 bg-gray-100 pb-20 md:pb-0">
+        <nav id="navigation" class="hidden absolute w-full md:relative md:block md:border-t border-b border-gray-500 font-futura uppercase tracking-wide text-gray-600 bg-gray-100 pb-12 md:pb-0">
           <ul class="flex flex-col md:flex-row justify-center">
             <%= navbar_item conn: @conn, action: :about, text: "À propos" %>
             <%= navbar_item conn: @conn, action: :index, text: "Projets" %>
-            <%= navbar_item conn: @conn, action: :map, text: "Carte" %>
+            <%= navbar_item conn: @conn, action: :map, text: "Carte", data: [ignore_navigation: true] %>
             <%= navbar_item conn: @conn, action: :publications, text: "Presse" %>
             <%= navbar_item conn: @conn, action: :contact, text: "Contact" %>
           </ul>

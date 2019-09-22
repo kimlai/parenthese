@@ -1,0 +1,22 @@
+@tailwind base;
+
+@tailwind components;
+
+div,
+p {
+  font-family: "Proxima-Nova";
+}
+
+#map-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.navbar-item.active {
+  @apply font-medium text-gray-900;
+}
+
+@tailwind utilities;

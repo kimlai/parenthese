@@ -41,6 +41,9 @@ const startNavigation = () => {
     if (!window.history) {
       return;
     }
+    if (e.target.hasAttribute("data-ignore-navigation")) {
+      return;
+    }
     const link = closestLink(e.target);
     if (!link) {
       return;

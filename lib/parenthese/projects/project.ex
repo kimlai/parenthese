@@ -9,6 +9,7 @@ defmodule Parenthese.Projects.Project do
     field :description, :string
     field :flickr_id, :string
     field :location, :string
+    field :location_coordinates, :map
     field :status, :string
     field :title, :string
     field :vimeo_ids, {:array, :string}, default: []

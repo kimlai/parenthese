@@ -18,6 +18,7 @@ defmodule Import do
       flickr_id: row.flickrId,
       inserted_at: translate_date(row.created),
       location: row.location,
+      location_coordinates: geocode(row.location),
       short_description: row.shortDescription,
       status: translate_status(row.status),
       title: row.title,
@@ -82,6 +83,22 @@ defmodule Import do
   defp upload_to_s3!(path, content) do
     ExAws.S3.put_object("parenthese", path, content)
     |> ExAws.request!()
+  end
+
+  def geocode(location) when is_binary(location) do
+    {:ok, 200, _, client_ref} =
+      :hackney.request(
+        :post,
+        "https://places-dsn.algolia.net/1/places/query",
+        [],
+        Jason.encode!(%{query: location}),
+        follow_redirect: true
+      )
+
+    {:ok, body} = :hackney.body(client_ref)
+    %{"hits" => [%{"_geoloc" => coordinates} | _]} = Jason.decode!(body)
+
+    coordinates
   end
 end
 
