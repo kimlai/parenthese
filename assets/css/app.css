@@ -210,35 +210,4 @@ body {
   }
 }
 
-/* Algolia places */
-.ap-input {
-  @apply border-gray-300 px-3 py-2 rounded-sm bg-gray-100;
-}
-.ap-input:focus {
-  @apply border-blue-500;
-}
-.ap-input-icon {
-  top: 20px;
-  bottom: inherit;
-}
-.ap-suggestions {
-}
-.ap-suggestions svg {
-  display: inline-block;
-  vertical-align: baseline;
-}
-.ap-footer {
-  display: none;
-}
-
-/* Reach UI */
-[data-reach-menu-item][data-selected] {
-  @apply bg-blue-600;
-}
-
-/* tailwind does not handle placeholder styles */
-input::placeholder {
-  @apply text-gray-600;
-}
-
 @tailwind utilities;
