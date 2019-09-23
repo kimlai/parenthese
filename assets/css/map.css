@@ -17,6 +17,7 @@ p {
 @media (min-width: 768px) {
   #map-container {
     bottom: 0;
+    top: 3rem;
   }
 }
 
