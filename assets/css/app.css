@@ -5,11 +5,7 @@
 @tailwind components;
 
 h1 {
-  font-family: "futura-pt";
-}
-
-body {
-  font-family: "Proxima-Nova";
+  font-family: "futura-pt sans-serif";
 }
 
 #logo {

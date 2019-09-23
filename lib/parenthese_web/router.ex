@@ -33,6 +33,7 @@ defmodule ParentheseWeb.Router do
 
     get "/", ProjectController, :index
     resources "/projects", ProjectController, except: [:show, :index]
+    resources "/publications", PublicationController, except: [:show]
   end
 
   # Other scopes may use custom stacks.

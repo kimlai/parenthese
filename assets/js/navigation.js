@@ -38,14 +38,12 @@ const navigate = link => {
 
 const startNavigation = () => {
   document.addEventListener("click", e => {
+    console.log(e.target);
     if (!window.history) {
       return;
     }
-    if (e.target.hasAttribute("data-ignore-navigation")) {
-      return;
-    }
     const link = closestLink(e.target);
-    if (!link) {
+    if (!link || link.hasAttribute("data-ignore-navigation")) {
       return;
     }
     e.preventDefault();

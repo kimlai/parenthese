@@ -1,0 +1,33 @@
+<h1>Show Publication</h1>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @publication.title %>
+  </li>
+
+  <li>
+    <strong>Project:</strong>
+    <%= @publication.project %>
+  </li>
+
+  <li>
+    <strong>Journal:</strong>
+    <%= @publication.journal %>
+  </li>
+
+  <li>
+    <strong>Url:</strong>
+    <%= @publication.url %>
+  </li>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @publication.date %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.publication_path(@conn, :edit, @publication) %></span>
+<span><%= link "Back", to: Routes.publication_path(@conn, :index) %></span>

@@ -2,6 +2,7 @@ defmodule ParentheseWeb.PageController do
   use ParentheseWeb, :controller
 
   alias Parenthese.Projects
+  alias Parenthese.Publications
   alias ParentheseWeb.LayoutView
 
   def index(conn, _params) do
@@ -15,6 +16,11 @@ defmodule ParentheseWeb.PageController do
 
   def contact(conn, _params) do
     render(conn, "contact.html")
+  end
+
+  def publications(conn, _params) do
+    publications = Publications.list_publications()
+    render(conn, "publications.html", publications: publications)
   end
 
   def map(conn, _params) do

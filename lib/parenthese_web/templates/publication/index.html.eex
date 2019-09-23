@@ -1,0 +1,33 @@
+<h1>Listing Publications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Project</th>
+      <th>Journal</th>
+      <th>Url</th>
+      <th>Date</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for publication <- @publications do %>
+    <tr>
+      <td><%= publication.title %></td>
+      <td><%= publication.project %></td>
+      <td><%= publication.journal %></td>
+      <td><%= publication.url %></td>
+      <td><%= publication.date %></td>
+
+      <td>
+        <%= link "Edit", to: Routes.publication_path(@conn, :edit, publication) %>
+        <%= link "Delete", to: Routes.publication_path(@conn, :delete, publication), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Publication", to: Routes.publication_path(@conn, :new) %></span>
