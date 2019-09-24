@@ -1,5 +1,1 @@
-<h1>Edit Publication</h1>
-
 <%= render "form.html", Map.put(assigns, :action, Routes.publication_path(@conn, :update, @publication)) %>
-
-<span><%= link "Back", to: Routes.publication_path(@conn, :index) %></span>

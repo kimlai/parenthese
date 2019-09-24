@@ -17,9 +17,7 @@ defmodule ParentheseWeb.PublicationController do
   def create(conn, %{"publication" => publication_params}) do
     case Publications.create_publication(publication_params) do
       {:ok, publication} ->
-        conn
-        |> put_flash(:info, "Publication created successfully.")
-        |> redirect(to: Routes.publication_path(conn, :show, publication))
+        redirect(conn, to: Routes.publication_path(conn, :show, publication))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -42,9 +40,7 @@ defmodule ParentheseWeb.PublicationController do
 
     case Publications.update_publication(publication, publication_params) do
       {:ok, publication} ->
-        conn
-        |> put_flash(:info, "Publication updated successfully.")
-        |> redirect(to: Routes.publication_path(conn, :show, publication))
+        redirect(conn, to: "#{Routes.publication_path(conn, :index)}#p-#{publication.id}")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", publication: publication, changeset: changeset)
@@ -55,8 +51,6 @@ defmodule ParentheseWeb.PublicationController do
     publication = Publications.get_publication!(id)
     {:ok, _publication} = Publications.delete_publication(publication)
 
-    conn
-    |> put_flash(:info, "Publication deleted successfully.")
-    |> redirect(to: Routes.publication_path(conn, :index))
+    redirect(conn, to: Routes.publication_path(conn, :index))
   end
 end
