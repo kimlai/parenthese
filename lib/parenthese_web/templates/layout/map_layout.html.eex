@@ -23,7 +23,7 @@
           </svg>
         </button>
       </div>
-      <nav id="navigation" class="hidden fixed top-0 left-0 bottom-0 px-6 pb-20 md:pb-0 z-30 w-full md:relative md:block md:border-t border-b border-gray-500 font-futura uppercase tracking-wide text-gray-600 pb-12 md:pb-0 bg-gray-900 md:bg-gray-100">
+      <nav id="navigation" class="hidden fixed top-0 left-0 bottom-0 px-6 pb-20 md:pb-0 z-30 w-full md:relative md:block md:border-t border-b border-gray-500 font-futura uppercase tracking-wide text-gray-600 pb-12 md:pb-0 bg-gray-900 md:bg-gray-100 md:shadow">
           <ul class="h-full flex flex-col md:flex-row justify-end md:justify-center">
           <%= navbar_item conn: @conn, action: :about, text: "À propos" %>
           <%= navbar_item conn: @conn, action: :index, text: "Projets" %>
