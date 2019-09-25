@@ -1,0 +1,7 @@
+<%= if action_name(@conn) == @action do %>
+  <div id="topbar-title-<%= @action %>" class="topbar-title pl-5 font-futura uppercase tracking-wide md:hidden">
+<%= else %>
+  <div id="topbar-title-<%= @action %>" class="topbar-title pl-5 font-futura uppercase tracking-wide md:hidden hidden">
+<%= end %>
+  <%= @text %>
+</div>

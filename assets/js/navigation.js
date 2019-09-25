@@ -38,7 +38,6 @@ const navigate = link => {
 
 const startNavigation = () => {
   document.addEventListener("click", e => {
-    console.log(e.target);
     if (!window.history) {
       return;
     }
