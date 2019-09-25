@@ -25,7 +25,6 @@ export const markActiveLink = id => {
   }
   const topBarTitles = document.getElementsByClassName("topbar-title");
   for (var i = 0; i < topBarTitles.length; i++) {
-    console.log(topBarTitles[i].id, `topbar-title-${id}`);
     if (topBarTitles[i].id === `topbar-title-${id}`) {
       show(topBarTitles[i]);
     } else {

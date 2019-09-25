@@ -11,34 +11,34 @@
   <body class="bg-gray-100 text-gray-900 overflow-y-scroll font-proxima-nova">
     <main role="main" class="container mx-auto pt-20 md:pt-6 pb-12 mb-8 px-6">
       <div class="bg-gray-100 z-20 relative">
-        <div class="fixed top-0 left-0 w-full md:relative flex items-baseline md:justify-center md:pb-4 md:pb-6 border-gray-400 z-20 bg-gray-800 md:bg-gray-100 text-gray-100">
-          <button id="sidebar-open" type="button" class="md:hidden p-5">
-            <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-            </svg>
-          </button>
-          <button id="sidebar-close" type="button" class="hidden md:hidden p-5">
-            <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-              <path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"></path>
-            </svg>
-          </button>
-          <div id="topbar-titles">
-            <%= topbar_title conn: @conn, action: :about, text: "À propos" %>
-            <%= topbar_title conn: @conn, action: :index, text: "Projets" %>
-            <%= topbar_title conn: @conn, action: :map, text: "Carte", data: [ignore_navigation: true] %>
-            <%= topbar_title conn: @conn, action: :publications, text: "Presse" %>
-            <%= topbar_title conn: @conn, action: :contact, text: "Contact" %>
+        <div class="fixed top-0 left-0 w-full md:relative flex items-center justify-between md:justify-center md:pb-4 md:pb-6 border-gray-400 z-20 bg-gray-800 md:bg-gray-100 text-gray-100">
+          <div class="flex items-baseline">
+            <button id="sidebar-open" type="button" class="md:hidden p-5">
+              <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+              </svg>
+            </button>
+            <button id="sidebar-close" type="button" class="hidden md:hidden p-5">
+              <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"></path>
+              </svg>
+            </button>
+            <div id="topbar-titles">
+              <%= topbar_title conn: @conn, action: :about, text: "À propos" %>
+              <%= topbar_title conn: @conn, action: :index, text: "Projets" %>
+              <%= topbar_title conn: @conn, action: :map, text: "Carte", data: [ignore_navigation: true] %>
+              <%= topbar_title conn: @conn, action: :publications, text: "Presse" %>
+              <%= topbar_title conn: @conn, action: :contact, text: "Contact" %>
+            </div>
           </div>
-          <div id="logo" class="hidden md:block">
-            <div id="logo-left"></div>
-            <div id="logo-top-left"></div>
-            <div id="logo-bottom-left"></div>
-            <div id="logo-right"></div>
-            <div id="logo-top-right"></div>
-            <div id="logo-bottom-right"></div>
-            <div id="logo-dot-1"></div>
-            <div id="logo-dot-2"></div>
-            <div id="logo-dot-3"></div>
+          <div class="w-10 mr-5 text-gray-600 md:mr-0 md:text-gray-900 md:block md:w-24">
+            <svg id="logo" class="fill-current" viewBox="0 0 110 76">
+              <polygon points="0 0, 20 0, 20 8, 10 8,10 68, 20 68, 20 76, 0 76" />
+              <polygon points="110 0, 90 0, 90 8, 100 8, 100 68, 90 68, 90 76, 110 76" />
+              <rect id="logo-dot-1" x="28" y="48" width="12" height="12" />
+              <rect id="logo-dot-2" x="49" y="48" width="12" height="12" />
+              <rect id="logo-dot-3" x="70" y="48" width="12" height="12" />
+            </svg>
           </div>
         </div>
         <nav id="navigation" class="hidden fixed top-0 left-0 bottom-0 pt-16 md:pt-0 px-6 0 z-10 w-full md:relative md:block md:border-t md:border-b border-gray-500 font-futura uppercase tracking-wide text-gray-600 bg-gray-900 md:bg-gray-100">
