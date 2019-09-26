@@ -24,8 +24,8 @@
               </svg>
             </button>
             <div id="topbar-titles">
-              <%= topbar_title conn: @conn, action: :about, text: "À propos" %>
               <%= topbar_title conn: @conn, action: :index, text: "Projets" %>
+              <%= topbar_title conn: @conn, action: :about, text: "À propos" %>
               <%= topbar_title conn: @conn, action: :map, text: "Carte", data: [ignore_navigation: true] %>
               <%= topbar_title conn: @conn, action: :publications, text: "Presse" %>
               <%= topbar_title conn: @conn, action: :contact, text: "Contact" %>
@@ -43,8 +43,8 @@
         </div>
         <nav id="navigation" class="hidden fixed top-0 left-0 bottom-0 pt-16 md:pt-0 px-6 0 z-10 w-full md:relative md:block md:border-t md:border-b border-gray-500 font-futura uppercase tracking-wide text-gray-600 bg-gray-900 md:bg-gray-100">
           <ul class="h-full md:flex md:justify-center">
-            <%= navbar_item conn: @conn, action: :about, text: "À propos" %>
             <%= navbar_item conn: @conn, action: :index, text: "Projets" %>
+            <%= navbar_item conn: @conn, action: :about, text: "À propos" %>
             <%= navbar_item conn: @conn, action: :map, text: "Carte", data: [ignore_navigation: true] %>
             <%= navbar_item conn: @conn, action: :publications, text: "Presse" %>
             <%= navbar_item conn: @conn, action: :contact, text: "Contact" %>
