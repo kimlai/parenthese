@@ -120,8 +120,8 @@ const initializeMap = (ref, navigateToProject) => {
   map.on("load", () => {
     map.addSource("projects", {
       type: "geojson",
-      cluster: true,
-      clusterRadius: 20,
+      //cluster: true,
+      //clusterRadius: 20,
       data: {
         type: "FeatureCollection",
         features: projects.map(projectToGeoJson)
@@ -177,7 +177,8 @@ const initializeMap = (ref, navigateToProject) => {
       layout: {
         "icon-image": "parenthese-logo",
         "icon-allow-overlap": true,
-        "symbol-avoid-edges": true,
+        //"text-allow-overlap": true,
+        "text-optional": true,
         "text-field": [
           "format",
           ["get", "title"],
