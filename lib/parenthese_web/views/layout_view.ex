@@ -2,7 +2,7 @@ defmodule ParentheseWeb.LayoutView do
   use ParentheseWeb, :view
 
   def navbar_item(assigns) do
-    render("navbar_item.html", Keyword.put_new(assigns, :data, []))
+    render("navbar_item.html", Keyword.merge([data: [], active: false], assigns))
   end
 
   def topbar_title(assigns) do

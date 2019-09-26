@@ -179,11 +179,11 @@ const initializeMap = (ref, navigateToProject) => {
       layout: {
         "icon-image": "marker-15",
         "icon-allow-overlap": true,
-        //"text-allow-overlap": true,
+        "icon-anchor": "bottom",
         "text-optional": true,
         "text-field": ["format", ["get", "title"], { "font-scale": 1 }],
-        "text-variable-anchor": ["left", "right", "bottom"],
-        "text-radial-offset": 1,
+        "text-variable-anchor": ["left", "right", "top"],
+        "text-radial-offset": 0.5,
         "text-justify": "left"
       },
       paint: {

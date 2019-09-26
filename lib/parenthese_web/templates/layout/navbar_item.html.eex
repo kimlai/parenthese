@@ -1,4 +1,4 @@
-<%= if action_name(@conn) == @action do %>
+<%= if action_name(@conn) == @action || @active == true do %>
   <li class="navbar-item py-4 md:p-4 hover:text-orange-500 active">
 <% else %>
   <li class="navbar-item py-4 md:p-4 hover:text-orange-500">

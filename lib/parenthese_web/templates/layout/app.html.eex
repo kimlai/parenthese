@@ -45,7 +45,6 @@
           <ul class="h-full md:flex md:justify-center">
             <%= navbar_item conn: @conn, action: :index, text: "Projets" %>
             <%= navbar_item conn: @conn, action: :about, text: "À propos" %>
-            <%= navbar_item conn: @conn, action: :map, text: "Carte", data: [ignore_navigation: true] %>
             <%= navbar_item conn: @conn, action: :publications, text: "Presse" %>
             <%= navbar_item conn: @conn, action: :contact, text: "Contact" %>
           </ul>
