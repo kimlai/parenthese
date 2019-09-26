@@ -99,8 +99,8 @@ const initializeMap = (ref, navigateToProject) => {
   const map = new mapboxgl.Map({
     container: ref,
     style: "mapbox://styles/kimlai/ck10dlbaq01r31clv9t573kit",
-    center: [3, 38.5],
-    zoom: 3
+    center: [3, 45.5],
+    zoom: 5
   });
 
   const projectToGeoJson = project => ({
