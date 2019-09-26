@@ -13,7 +13,7 @@ document.getElementById("sidebar-open").addEventListener("click", openNavbar);
 document.getElementById("sidebar-close").addEventListener("click", closeNavbar);
 
 const ProjectList = ({ projects }) => (
-  <Fragment>
+  <div className="hidden md:block fixed top-0 bottom-0 right-0 pt-16 bg-gray-100 border-gray-500 border-l w-1/4 overflow-y-scroll">
     {projects.map(project => (
       <div className="project p-6 w-full hover:bg-gray-300" key={project.id}>
         <Link to={`/map/project/${project.id}`}>
@@ -29,37 +29,39 @@ const ProjectList = ({ projects }) => (
         </Link>
       </div>
     ))}
-  </Fragment>
+  </div>
 );
 
 const SelectedProject = ({ projectId }) => {
   const project = projects.filter(p => p.id === parseInt(projectId, 10))[0];
 
   return (
-    <div className="px-6">
-      <div className="pt-6 font-semibold text-2xl uppercase font-futura tracking-wide">
-        {project.title}
-      </div>
-      <div className="text-gray-700 py-4">{project.short_description}</div>
-      <div>
-        <img src={`${project.cover_url}/400x400.jpg`} />
-      </div>
-      <div className="text-gray-700 py-4 text-gray-700">
-        {project.description}
-      </div>
-      <div className="bottom-0 fixed w-full bg-gray-100 pb-10 pt-6">
-        <Link
-          to="/map"
-          className=" uppercase text-orange-500 hover:text-orange-400 pr-4 font-bold"
-        >
-          Retour
-        </Link>
-        <a
-          href={`/project/${project.id}`}
-          className=" uppercase bg-orange-500 hover:bg-orange-400 rounded px-4 py-3 text-white font-bold"
-        >
-          Voir
-        </a>
+    <div className="fixed top-0 bottom-0 right-0 pt-16 bg-gray-100 border-gray-500 md:border-l w-full md:w-1/4 overflow-y-scroll z-30 md:z-0">
+      <div className="px-6">
+        <div className="pt-6 font-semibold text-2xl uppercase font-futura tracking-wide">
+          {project.title}
+        </div>
+        <div className="text-gray-700 py-4">{project.short_description}</div>
+        <div>
+          <img src={`${project.cover_url}/400x400.jpg`} />
+        </div>
+        <div className="text-gray-700 py-4 text-gray-700">
+          {project.description}
+        </div>
+        <div className="bottom-0 fixed w-full bg-gray-100 pb-10 pt-6">
+          <Link
+            to="/map"
+            className=" uppercase text-orange-500 hover:text-orange-400 pr-4 font-bold"
+          >
+            Retour
+          </Link>
+          <a
+            href={`/project/${project.id}`}
+            className=" uppercase bg-orange-500 hover:bg-orange-400 rounded px-4 py-3 text-white font-bold"
+          >
+            Voir
+          </a>
+        </div>
       </div>
     </div>
   );
@@ -75,9 +77,7 @@ const Map = ({ children, navigate }) => {
   return (
     <Fragment>
       <div id="map-container" ref={mapRef}></div>
-      <div className="hidden md:block fixed top-0 bottom-0 right-0 pt-16 bg-gray-100 border-gray-500 border-l w-1/4 overflow-y-scroll">
-        {children}
-      </div>
+      {children}
     </Fragment>
   );
 };

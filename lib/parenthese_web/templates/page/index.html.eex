@@ -14,9 +14,6 @@
   <li data-category="pedagogy" class="category-filter py-2 px-4 md:py-0 uppercase hover:text-orange-500 cursor-pointer">
     Pédagogie
   </li>
-  <li data-category="pedagogy" class="category-filter py-2 px-4 md:py-0 uppercase hover:text-orange-500 cursor-pointer">
-    Voir sur une carte
-  </li>
 </ul>
 <section>
   <ul id="project-list" class="flex flex-wrap">
