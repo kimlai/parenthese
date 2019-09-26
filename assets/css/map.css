@@ -30,4 +30,8 @@ p {
   }
 }
 
+.project.selected {
+  @apply bg-gray-300 border-orange-500 border-2;
+}
+
 @tailwind utilities;

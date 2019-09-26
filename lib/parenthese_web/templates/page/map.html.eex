@@ -1,1 +1,4 @@
-<div id="map-container"></div>
+<div id="react-root"></div>
+<script>
+  var projects = <%= raw Jason.encode!(@projects) %>
+</script>

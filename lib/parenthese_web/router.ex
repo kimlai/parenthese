@@ -2,38 +2,39 @@ defmodule ParentheseWeb.Router do
   use ParentheseWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
-    plug :fetch_session
-    plug :fetch_flash
-    plug :protect_from_forgery
-    plug :put_secure_browser_headers
+    plug(:accepts, ["html"])
+    plug(:fetch_session)
+    plug(:fetch_flash)
+    plug(:protect_from_forgery)
+    plug(:put_secure_browser_headers)
   end
 
   pipeline :admin do
-    plug :put_layout, {ParentheseWeb.LayoutView, "admin.html"}
+    plug(:put_layout, {ParentheseWeb.LayoutView, "admin.html"})
   end
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug(:accepts, ["json"])
   end
 
   scope "/", ParentheseWeb do
-    pipe_through :browser
+    pipe_through(:browser)
 
-    get "/", PageController, :index
-    get "/about", PageController, :about
-    get "/contact", PageController, :contact
-    get "/map", PageController, :map
-    get "/publications", PageController, :publications
-    get "/project/:id", ProjectController, :show
+    get("/", PageController, :index)
+    get("/about", PageController, :about)
+    get("/contact", PageController, :contact)
+    get("/map", PageController, :map)
+    get("/map/*path", PageController, :map)
+    get("/publications", PageController, :publications)
+    get("/project/:id", ProjectController, :show)
   end
 
   scope "/admin", ParentheseWeb do
-    pipe_through [:browser, :admin]
+    pipe_through([:browser, :admin])
 
-    get "/", ProjectController, :index
-    resources "/projects", ProjectController, except: [:show, :index]
-    resources "/publications", PublicationController, except: [:show]
+    get("/", ProjectController, :index)
+    resources("/projects", ProjectController, except: [:show, :index])
+    resources("/publications", PublicationController, except: [:show])
   end
 
   # Other scopes may use custom stacks.
