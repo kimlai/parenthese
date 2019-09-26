@@ -22,7 +22,7 @@ const ProjectList = ({ projects }) => (
               <img src={`${project.cover_url}/400x400.jpg`} />
             </div>
             <div>
-              <div className="font-semibold">{project.title}</div>
+              <div className="font-medium">{project.title}</div>
               <div className="text-gray-700">{project.short_description}</div>
             </div>
           </div>
@@ -37,7 +37,7 @@ const SelectedProject = ({ projectId }) => {
 
   return (
     <div className="fixed top-0 bottom-0 right-0 pt-16 bg-gray-100 border-gray-500 md:border-l w-full md:w-1/4 overflow-y-scroll z-30 md:z-0">
-      <div className="px-6">
+      <div className="px-6 pb-20">
         <div className="pt-6 font-semibold text-2xl uppercase font-futura tracking-wide">
           {project.title}
         </div>
@@ -177,19 +177,11 @@ const initializeMap = (ref, navigateToProject) => {
       source: "projects",
       //      filter: ["!", ["has", "point_count"]],
       layout: {
-        "icon-image": "parenthese-logo",
+        "icon-image": "marker-15",
         "icon-allow-overlap": true,
         //"text-allow-overlap": true,
         "text-optional": true,
-        "text-field": [
-          "format",
-          ["get", "title"],
-          { "font-scale": 1.2 },
-          "\n",
-          {},
-          ["get", "short_description"],
-          { "font-scale": 0.7 }
-        ],
+        "text-field": ["format", ["get", "title"], { "font-scale": 1 }],
         "text-variable-anchor": ["left", "right", "bottom"],
         "text-radial-offset": 1,
         "text-justify": "left"
