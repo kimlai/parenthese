@@ -41,7 +41,9 @@ const SelectedProject = ({ projectId }) => {
         <div className="pt-6 font-semibold text-2xl uppercase font-futura tracking-wide">
           {project.title}
         </div>
-        <div className="text-gray-700 py-4">{project.short_description}</div>
+        <div className="text-gray-700 text-lg py-4">
+          {project.short_description}
+        </div>
         <div>
           <img src={`${project.cover_url}/400x400.jpg`} />
         </div>
