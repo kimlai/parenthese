@@ -30,35 +30,26 @@ const projectToGeoJson = project => ({
   }
 });
 
-const hightlightProject = (map, projectId) => {
+const highlightProject = (map, projectId) => {
   const [[selectedProject], otherProjects] = partition(
     p => p.id === projectId,
     projects
   );
-  // re-order the data so that the highlighted project is on top of the others
   map.getSource("projects").setData({
     type: "FeatureCollection",
-    features: [selectedProject, ...otherProjects].map(projectToGeoJson)
+    features: otherProjects.map(projectToGeoJson)
   });
-  otherProjects.forEach(p =>
-    map.setFeatureState(
-      { source: "projects", id: p.id },
-      { highlighted: false }
-    )
-  );
-  map.setFeatureState(
-    { source: "projects", id: selectedProject.id },
-    { highlighted: true }
-  );
+  map
+    .getSource("highlighted-project")
+    .setData(projectToGeoJson(selectedProject));
 };
 
 const removeHighlighting = map => {
-  projects.forEach(p =>
-    map.setFeatureState(
-      { source: "projects", id: p.id },
-      { highlighted: false }
-    )
-  );
+  map.getSource("projects").setData({
+    type: "FeatureCollection",
+    features: projects.map(projectToGeoJson)
+  });
+  map.getSource("highlighted-project").setData({ type: "Feature" });
 };
 
 const ProjectList = ({ projects, map }) => (
@@ -67,7 +58,7 @@ const ProjectList = ({ projects, map }) => (
       <div
         className="project p-6 w-full hover:bg-gray-300"
         key={project.id}
-        onMouseEnter={map ? () => hightlightProject(map, project.id) : null}
+        onMouseEnter={map ? () => highlightProject(map, project.id) : null}
         onMouseLeave={map ? () => removeHighlighting(map) : null}
       >
         <Link to={`/map/project/${project.id}`}>
@@ -91,7 +82,7 @@ const SelectedProject = ({ projectId, map }) => {
   const [[project], otherProjects] = partition(p => p.id === id, projects);
 
   if (map) {
-    hightlightProject(map, id);
+    highlightProject(map, id);
     map.flyTo({
       center: [
         project.location_coordinates.lng,
@@ -101,7 +92,7 @@ const SelectedProject = ({ projectId, map }) => {
   }
 
   return (
-    <div className="fixed top-0 bottom-0 right-0 pt-16 bg-gray-100 border-gray-500 md:border-l w-full md:w-1/4 overflow-y-scroll z-30 md:z-0">
+    <div className="fixed top-0 bottom-0 right-0 pt-16 bg-gray-100 border-gray-500 md:border-l w-full md:w-1/4 overflow-y-hidden z-30 md:z-0">
       <div className="px-6 pb-20">
         <div className="pt-6 font-medium text-2xl uppercase font-futura tracking-wide">
           {project.title}
@@ -124,7 +115,7 @@ const SelectedProject = ({ projectId, map }) => {
           </Link>
           <a
             href={`/project/${project.id}`}
-            className=" uppercase bg-orange-500 hover:bg-orange-400 rounded px-4 py-3 text-white font-bold"
+            className=" uppercase bg-orange-500 hover:bg-orange-400 rounded ml-4 px-4 py-3 text-white font-bold"
           >
             Voir
           </a>
@@ -148,7 +139,7 @@ const Page = () => {
   );
   return (
     <Fragment>
-      <div id="map-container" ref={mapRef}></div>
+      <div className="md:w-3/4" id="map-container" ref={mapRef}></div>
       <Router basepath="/map">
         <ProjectList projects={projects} path="/" map={map} />
         <SelectedProject path="/project/:projectId" map={map} />
@@ -162,7 +153,7 @@ const initializeMap = (ref, navigateToProject, setMap) => {
     "pk.eyJ1Ijoia2ltbGFpIiwiYSI6ImNpdHg4b3psMDAwMnAzd29hZ2VrbzVmeTcifQ.JEzjYNojtEPRBove3beibA";
   const map = new mapboxgl.Map({
     container: ref,
-    style: "mapbox://styles/kimlai/ck10dlbaq01r31clv9t573kit",
+    style: "mapbox://styles/kimlai/ck11ws8pt0lqz1cqgu2ufbfhp",
     center: [3, 45.5],
     zoom: 5,
     fadeDuration: 80
@@ -176,23 +167,27 @@ const initializeMap = (ref, navigateToProject, setMap) => {
         features: projects.map(projectToGeoJson)
       }
     });
+    map.addSource("highlighted-project", {
+      type: "geojson",
+      data: { type: "Feature" }
+    });
 
     map.addLayer({
       id: "highlighted-marker",
       type: "symbol",
-      source: "projects",
+      source: "highlighted-project",
       layout: {
         "icon-image": "marker-15-orange",
         "icon-allow-overlap": true,
-        "icon-anchor": "bottom"
+        "icon-anchor": "bottom",
+        "text-field": ["format", ["get", "title"], { "font-scale": 1 }],
+        "text-variable-anchor": ["left", "right", "top"],
+        "text-radial-offset": 0.5
       },
       paint: {
-        "icon-opacity": [
-          "case",
-          ["boolean", ["feature-state", "highlighted"], false],
-          1,
-          0
-        ]
+        "text-color": "#ED8936",
+        "text-halo-color": "#FFFAF0",
+        "text-halo-width": 1
       }
     });
 
@@ -209,29 +204,12 @@ const initializeMap = (ref, navigateToProject, setMap) => {
           "text-field": ["format", ["get", "title"], { "font-scale": 1 }],
           "text-variable-anchor": ["left", "right", "top"],
           "text-radial-offset": 0.5,
-          "text-justify": "left",
           "symbol-z-order": "source"
         },
         paint: {
-          "text-color": [
-            "case",
-            ["boolean", ["feature-state", "highlighted"], false],
-            "#ED8936",
-            "#1A202C"
-          ],
-          "text-halo-color": [
-            "case",
-            ["boolean", ["feature-state", "highlighted"], false],
-            "#FFFAF0",
-            "#F7FAFC"
-          ],
-          "text-halo-width": 1,
-          "icon-opacity": [
-            "case",
-            ["boolean", ["feature-state", "highlighted"], false],
-            0,
-            1
-          ]
+          "text-color": "#1A202C",
+          "text-halo-color": "#F7FAFC",
+          "text-halo-width": 1
         }
       },
       "highlighted-marker"
