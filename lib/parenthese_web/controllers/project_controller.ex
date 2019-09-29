@@ -1,6 +1,8 @@
 defmodule ParentheseWeb.ProjectController do
   use ParentheseWeb, :controller
 
+  require Logger
+
   alias Parenthese.Projects
   alias Parenthese.Projects.Project
 
@@ -35,10 +37,15 @@ defmodule ParentheseWeb.ProjectController do
       with {:ok, 200, _, client_ref} <- fetch_flickr_album(project.flickr_id),
            {:ok, body} <- :hackney.body(client_ref),
            {:ok, %{"stat" => "ok", "photoset" => photoset}} <- Jason.decode(body) do
-        photoset["photo"]
+        {:ok, photoset["photo"]}
       else
-        {:ok, %{"stat" => "fail"}} ->
-          []
+        {:ok, %{"stat" => "fail", "message" => message}} ->
+          Logger.error("""
+            Failed to fetch Flickr album #{project.flickr_id} for project #{id}
+            Error message: #{message}
+          """)
+
+          {:error, "Les photos n'ont pas pu être chargées"}
       end
 
     render(conn, "show.html", project: project, photos: photos)

@@ -20,11 +20,16 @@
     <div class="text-gray-700"><%= @project.date %></div>
     <div class="text-gray-700"><%= @project.location %></div>
   </div>
-  <ul>
-    <%= for photo <- @photos do %>
-      <li class="mb-6">
-        <img src="<%= flickr_url(photo) %>" />
-      </li>
-    <% end %>
-  </ul>
+  <%= case @photos do %>
+    <%= {:ok, photos} -> %>
+      <ul>
+        <%= for photo <- photos do %>
+          <li class="mb-6">
+            <img src="<%= flickr_url(photo) %>" />
+          </li>
+        <% end %>
+      </ul>
+    <%= {:error, err} -> %>
+      <div class="w-full text-center px-6 py-24 bg-gray-200 text-gray-700 md:py-48 border"><%= err %></div>
+  <% end %>
 </div>
