@@ -1,4 +1,4 @@
-<div class="text-center mb-8 md:text-left md:my-12">
+<div class="text-center mb-8 md:text-left my-6 md:my-12">
     <%= link "Nouveau Projet",
         to: Routes.project_path(@conn, :new),
         class: "uppercase bg-teal-600 hover:bg-teal-400 rounded-full px-8 py-3 text-white font-bold"
