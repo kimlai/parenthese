@@ -17,7 +17,7 @@ defmodule ParentheseWeb.PublicationController do
   def create(conn, %{"publication" => publication_params}) do
     case Publications.create_publication(publication_params) do
       {:ok, publication} ->
-        redirect(conn, to: Routes.publication_path(conn, :show, publication))
+        redirect(conn, to: "#{Routes.publication_path(conn, :index)}#p-#{publication.id}")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)

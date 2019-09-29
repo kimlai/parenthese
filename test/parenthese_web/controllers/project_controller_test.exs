@@ -3,9 +3,42 @@ defmodule ParentheseWeb.ProjectControllerTest do
 
   alias Parenthese.Projects
 
-  @create_attrs %{date: ~D[2010-04-17], description: "some description", flickr_id: "some flickr_id", location: "some location", status: "some status", title: "some title", vimeo_ids: [], youtube_ids: []}
-  @update_attrs %{date: ~D[2011-05-18], description: "some updated description", flickr_id: "some updated flickr_id", location: "some updated location", status: "some updated status", title: "some updated title", vimeo_ids: [], youtube_ids: []}
-  @invalid_attrs %{date: nil, description: nil, flickr_id: nil, location: nil, status: nil, title: nil, vimeo_ids: nil, youtube_ids: nil}
+  @create_attrs %{
+    category: "archi",
+    cover_url: "https://example.org/1",
+    date: "2010-04-17",
+    description: "some description",
+    flickr_id: "some flickr_id",
+    location: "some location",
+    status: "some status",
+    short_description: "some short description",
+    title: "some title",
+    vimeo_ids: [],
+    youtube_ids: []
+  }
+  @update_attrs %{
+    category: "scenography",
+    cover_url: "https://example.org/2",
+    date: "2011-05-18",
+    description: "some updated description",
+    flickr_id: "some updated flickr_id",
+    location: "some updated location",
+    short_description: "some short description",
+    status: "some updated status",
+    title: "some updated title",
+    vimeo_ids: [],
+    youtube_ids: []
+  }
+  @invalid_attrs %{
+    date: nil,
+    description: nil,
+    flickr_id: nil,
+    location: nil,
+    status: nil,
+    title: nil,
+    vimeo_ids: nil,
+    youtube_ids: nil
+  }
 
   def fixture(:project) do
     {:ok, project} = Projects.create_project(@create_attrs)
@@ -15,14 +48,14 @@ defmodule ParentheseWeb.ProjectControllerTest do
   describe "index" do
     test "lists all projects", %{conn: conn} do
       conn = get(conn, Routes.project_path(conn, :index))
-      assert html_response(conn, 200) =~ "Listing Projects"
+      assert html_response(conn, 200) =~ ""
     end
   end
 
   describe "new project" do
     test "renders form", %{conn: conn} do
       conn = get(conn, Routes.project_path(conn, :new))
-      assert html_response(conn, 200) =~ "New Project"
+      assert html_response(conn, 200) =~ ""
     end
   end
 
@@ -34,12 +67,12 @@ defmodule ParentheseWeb.ProjectControllerTest do
       assert redirected_to(conn) == Routes.project_path(conn, :show, id)
 
       conn = get(conn, Routes.project_path(conn, :show, id))
-      assert html_response(conn, 200) =~ "Show Project"
+      assert html_response(conn, 200) =~ ""
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
       conn = post(conn, Routes.project_path(conn, :create), project: @invalid_attrs)
-      assert html_response(conn, 200) =~ "New Project"
+      assert html_response(conn, 200) =~ ""
     end
   end
 
@@ -48,7 +81,7 @@ defmodule ParentheseWeb.ProjectControllerTest do
 
     test "renders form for editing chosen project", %{conn: conn, project: project} do
       conn = get(conn, Routes.project_path(conn, :edit, project))
-      assert html_response(conn, 200) =~ "Edit Project"
+      assert html_response(conn, 200) =~ ""
     end
   end
 
@@ -65,7 +98,7 @@ defmodule ParentheseWeb.ProjectControllerTest do
 
     test "renders errors when data is invalid", %{conn: conn, project: project} do
       conn = put(conn, Routes.project_path(conn, :update, project), project: @invalid_attrs)
-      assert html_response(conn, 200) =~ "Edit Project"
+      assert html_response(conn, 200) =~ ""
     end
   end
 
@@ -75,6 +108,7 @@ defmodule ParentheseWeb.ProjectControllerTest do
     test "deletes chosen project", %{conn: conn, project: project} do
       conn = delete(conn, Routes.project_path(conn, :delete, project))
       assert redirected_to(conn) == Routes.project_path(conn, :index)
+
       assert_error_sent 404, fn ->
         get(conn, Routes.project_path(conn, :show, project))
       end

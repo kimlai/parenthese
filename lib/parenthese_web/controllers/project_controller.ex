@@ -36,6 +36,9 @@ defmodule ParentheseWeb.ProjectController do
            {:ok, body} <- :hackney.body(client_ref),
            {:ok, %{"stat" => "ok", "photoset" => photoset}} <- Jason.decode(body) do
         photoset["photo"]
+      else
+        {:ok, %{"stat" => "fail"}} ->
+          []
       end
 
     render(conn, "show.html", project: project, photos: photos)
