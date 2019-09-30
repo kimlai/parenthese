@@ -21,7 +21,7 @@
     <div class="text-gray-700"><%= @project.location %></div>
   </div>
   <%= case @photos do %>
-    <%= {:ok, photos} -> %>
+    <% {:ok, photos} -> %>
       <ul>
         <%= for photo <- photos do %>
           <li class="mb-6">
@@ -29,7 +29,7 @@
           </li>
         <% end %>
       </ul>
-    <%= {:error, err} -> %>
+    <% {:error, err} -> %>
       <div class="w-full text-center px-6 py-24 bg-gray-200 text-gray-700 md:py-48 border"><%= err %></div>
   <% end %>
 </div>
