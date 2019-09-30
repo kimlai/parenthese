@@ -60,7 +60,7 @@ defmodule Import do
     upload_to_s3!("project-covers/#{id}/300.jpg", File.read!(original_path))
     upload_to_s3!("project-covers/#{id}/400x400.jpg", File.read!(thumbnail_path))
 
-    "https://parenthese.s3-eu-west-1.amazonaws.com/project-covers/#{id}"
+    "https://#{System.get_env("S3_BUCKET")}.s3-eu-west-1.amazonaws.com/project-covers/#{id}"
   end
 
   defp make_thumbnail(original_path, thumbnail_path) do
@@ -81,7 +81,7 @@ defmodule Import do
   end
 
   defp upload_to_s3!(path, content) do
-    ExAws.S3.put_object("parenthese", path, content)
+    ExAws.S3.put_object(System.get_env("S3_BUCKET"), path, content)
     |> ExAws.request!()
   end
 

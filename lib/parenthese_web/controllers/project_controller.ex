@@ -106,7 +106,7 @@ defmodule ParentheseWeb.ProjectController do
     Map.put(
       project_params,
       "cover_url",
-      "https://parenthese.s3-eu-west-1.amazonaws.com/project-covers/#{uuid}"
+      "https://#{System.get_env("S3_BUCKET")}.s3-eu-west-1.amazonaws.com/project-covers/#{uuid}"
     )
   end
 
@@ -130,7 +130,7 @@ defmodule ParentheseWeb.ProjectController do
   end
 
   defp upload_to_s3!(path, content) do
-    ExAws.S3.put_object("parenthese", path, content)
+    ExAws.S3.put_object(System.get_env("S3_BUCKET"), path, content)
     |> ExAws.request!()
   end
 
