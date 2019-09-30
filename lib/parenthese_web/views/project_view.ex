@@ -18,7 +18,7 @@ defmodule ParentheseWeb.ProjectView do
   end
 
   def flickr_url(photo) do
-    "http://farm#{photo["farm"]}.staticflickr.com/#{photo["server"]}/#{photo["id"]}_#{
+    "https://farm#{photo["farm"]}.staticflickr.com/#{photo["server"]}/#{photo["id"]}_#{
       photo["secret"]
     }_b.jpg"
   end
