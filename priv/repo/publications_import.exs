@@ -6,6 +6,11 @@ defmodule Import do
     row
     |> row_to_publication()
     |> Repo.insert!()
+
+    Ecto.Adapters.SQL.query!(
+      Parenthese.Repo,
+      "SELECT SETVAL('publications_id_seq', MAX(id)) FROM publications;"
+    )
   end
 
   def row_to_publication(row) do
