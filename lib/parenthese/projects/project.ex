@@ -16,6 +16,8 @@ defmodule Parenthese.Projects.Project do
     field :youtube_ids, {:array, :string}, default: []
     field :category, :string
     field :cover_url
+    field :client
+    field :client_website
 
     timestamps()
   end
@@ -34,7 +36,9 @@ defmodule Parenthese.Projects.Project do
       :status,
       :date,
       :category,
-      :cover_url
+      :cover_url,
+      :client,
+      :client_website
     ])
     |> validate_required([
       :title,

@@ -199,7 +199,24 @@ const Form = () => {
             select={setCategory}
           />
           <Error>{errors.category}</Error>
+
+          <Label htmlFor="client">Client</Label>
+          <Input
+            id="client"
+            name="project[client]"
+            defaultValue={changes.client || project.client}
+          />
+          <Error>{errors.client}</Error>
+
+          <Label htmlFor="client_website">Site internet</Label>
+          <Input
+            id="client_website"
+            name="project[client_website]"
+            defaultValue={changes.client_website || project.client_website}
+          />
+          <Error>{errors.client_website}</Error>
         </div>
+
         <div className="w-full md:w-3/4 md:pl-12">
           <Label htmlFor="cover">Vignette</Label>
           <Input

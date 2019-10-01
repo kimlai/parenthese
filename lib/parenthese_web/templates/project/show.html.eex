@@ -19,6 +19,20 @@
     <div class="pb-2 font-medium"><%= translate_category(@project.category) %></div>
     <div class="text-gray-700"><%= @project.date %></div>
     <div class="text-gray-700"><%= @project.location %></div>
+    <%= if @project.client do %>
+      <div class="text-gray-700 pt-4 text-sm">
+        Pour
+        <span class="text-gray-900 font-medium">
+          <%= if @project.client_website do %>
+            <a class="hover:text-orange-500" href="<%= @project.client_website %>" target="_blank" data-ignore-navigation>
+              <%= @project.client %>
+            </a>
+          <% else %>
+            <%= @project.client %>
+          <% end %>
+        </span>
+      </div>
+    <% end %>
   </div>
   <%= case @photos do %>
     <% {:ok, photos} -> %>

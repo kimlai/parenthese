@@ -17,6 +17,8 @@ defmodule Import do
     %Project{
       id: row.id,
       category: translate_category(row.category),
+      client: row.name,
+      client_website: row.website,
       cover_url: upload_cover(row.id),
       date: row.date,
       description: row.fullDescription,
@@ -114,10 +116,13 @@ Sqlitex.with_db('parenthese.db', fn db ->
     SELECT
       project.*,
       COALESCE(GROUP_CONCAT(youtubeid, ","), "") as youtube_ids,
-      COALESCE(GROUP_CONCAT(vimeoid, ","), "") as vimeo_ids
+      COALESCE(GROUP_CONCAT(vimeoid, ","), "") as vimeo_ids,
+      c.name,
+      c.website
     FROM project
     LEFT JOIN project_youtube y ON y.projectid = project.id
     LEFT JOIN project_vimeo v ON v.projectid = project.id
+    LEFT JOIN project_client c ON c.projectid = project.id
     GROUP BY project.id
     ORDER BY id ASC
     """

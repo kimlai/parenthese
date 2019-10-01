@@ -15,6 +15,8 @@ defmodule Parenthese.Repo.Migrations.CreateProjects do
       add(:date, :string)
       add(:category, :string)
       add(:cover_url, :string)
+      add(:client, :string)
+      add(:client_website, :string)
 
       timestamps()
     end
