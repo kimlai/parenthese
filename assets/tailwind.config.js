@@ -5,7 +5,7 @@ module.exports = {
       "proxima-nova": ["Proxima-Nova", "sans serif"]
     },
     minHeight: {
-      "270px": "270px"
+      "227px": "227px"
     }
   },
   variants: {
