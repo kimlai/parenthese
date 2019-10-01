@@ -53,7 +53,7 @@ const removeHighlighting = map => {
 };
 
 const ProjectList = ({ projects, map }) => (
-  <div className="hidden md:block fixed top-0 bottom-0 right-0 pt-16 bg-gray-100 border-gray-500 border-l w-1/4 overflow-y-scroll">
+  <div className="hidden md:block fixed top-0 bottom-0 right-0 pt-48 bg-gray-100 border-gray-500 border-l w-1/4 overflow-y-scroll">
     {projects.map(project => (
       <div
         className="project p-6 w-full hover:bg-gray-300"
