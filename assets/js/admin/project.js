@@ -2,6 +2,16 @@ import React, { Fragment, useState } from "react";
 import ReactDOM from "react-dom";
 import { Menu, MenuList, MenuButton, MenuItem } from "@reach/menu-button";
 import "@reach/menu-button/styles.css";
+import {
+  Editor,
+  EditorState,
+  RichUtils,
+  ContentState,
+  convertToRaw,
+  convertFromRaw
+} from "draft-js";
+import "draft-js/dist/Draft.css";
+import classnames from "classnames";
 import PlaceInput from "./PlaceInput";
 
 const Label = props => (
@@ -115,6 +125,24 @@ const Form = () => {
 
   const removeVimeoId = id => setVimeoIds(vimeoIds.filter(vId => vId != id));
 
+  let editorRef = React.createRef();
+  const focusEditor = () => editorRef.current.focus();
+  let description = changes.description || project.description || "";
+  let content;
+  try {
+    description = JSON.parse(description); // when the description has already been modified by draft-js
+    content = convertFromRaw(description);
+  } catch (err) {
+    content = ContentState.createFromText(description); // when the description comes from a simple textarea
+  }
+  const [editorState, setEditorState] = React.useState(
+    EditorState.createWithContent(content)
+  );
+  const onBoldClick = e => {
+    e.preventDefault();
+    setEditorState(RichUtils.toggleInlineStyle(editorState, "BOLD"));
+  };
+
   return (
     <form
       acceptCharset="UTF-8"
@@ -191,17 +219,39 @@ const Form = () => {
           <Error>{errors.short_description}</Error>
 
           <Label htmlFor="description">Description complète</Label>
-          <textarea
-            className={
-              "w-full border px-3 py-2 rounded-sm bg-gray-100 focus:border-blue-500 " +
-              (errors.description && "border-red-700")
-            }
-            rows="15"
+          <input
+            type="hidden"
             id="description"
             name="project[description]"
-            type="textarea"
-            defaultValue={changes.description || project.description}
+            value={JSON.stringify(
+              convertToRaw(editorState.getCurrentContent())
+            )}
           />
+          <div>
+            <button
+              className={classnames("p-1 font-semibold", "text-gray-600", {
+                "text-gray-900": editorState.getCurrentInlineStyle().has("BOLD")
+              })}
+              type="button"
+              onMouseDown={onBoldClick}
+            >
+              B
+            </button>
+            <div
+              style={{ "min-height": "380px" }}
+              className={classnames(
+                "border px-3 py-2 rounded-sm focus:border-blue-500 bg-gray-100",
+                { "border-red-700": errors.description }
+              )}
+              onClick={focusEditor}
+            >
+              <Editor
+                editorState={editorState}
+                onChange={setEditorState}
+                ref={editorRef}
+              />
+            </div>
+          </div>
           <Error>{errors.description}</Error>
         </div>
       </div>

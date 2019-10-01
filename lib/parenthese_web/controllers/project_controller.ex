@@ -39,6 +39,9 @@ defmodule ParentheseWeb.ProjectController do
            {:ok, %{"stat" => "ok", "photoset" => photoset}} <- Jason.decode(body) do
         {:ok, photoset["photo"]}
       else
+        {:error, _} ->
+          {:error, "Les photos n'ont pas pu être chargées"}
+
         {:ok, %{"stat" => "fail", "message" => message}} ->
           Logger.error("""
             Failed to fetch Flickr album #{project.flickr_id} for project #{id}
