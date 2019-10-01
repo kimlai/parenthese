@@ -13,3 +13,8 @@ before_script:
 
 script:
     - mix test
+
+cache:
+    directories:
+        - _build
+        - deps
