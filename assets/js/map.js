@@ -93,7 +93,7 @@ const SelectedProject = ({ projectId, map }) => {
   }
 
   return (
-    <div className="fixed top-0 bottom-0 right-0 pt-48 bg-gray-100 border-gray-500 md:border-l w-full md:w-1/4 overflow-y-hidden z-30 md:z-0">
+    <div className="fixed top-0 bottom-0 right-0 pt-16 md:pt-48 bg-gray-100 border-gray-500 md:border-l w-full md:w-1/4 overflow-y-hidden z-30 md:z-0">
       <div className="px-6 pb-20">
         <div className="pt-6 font-medium text-2xl uppercase font-futura tracking-wide">
           {project.title}
