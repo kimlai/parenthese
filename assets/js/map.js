@@ -6,6 +6,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { Router, Link, navigate } from "@reach/router";
 import mapboxgl from "mapbox-gl";
+import RichText from "./rich-text.js";
 import { openNavbar, closeNavbar } from "./navbar";
 import { removeClass, addClass } from "./dom";
 import { partition } from "./list";
@@ -92,7 +93,7 @@ const SelectedProject = ({ projectId, map }) => {
   }
 
   return (
-    <div className="fixed top-0 bottom-0 right-0 pt-16 bg-gray-100 border-gray-500 md:border-l w-full md:w-1/4 overflow-y-hidden z-30 md:z-0">
+    <div className="fixed top-0 bottom-0 right-0 pt-48 bg-gray-100 border-gray-500 md:border-l w-full md:w-1/4 overflow-y-hidden z-30 md:z-0">
       <div className="px-6 pb-20">
         <div className="pt-6 font-medium text-2xl uppercase font-futura tracking-wide">
           {project.title}
@@ -104,7 +105,7 @@ const SelectedProject = ({ projectId, map }) => {
           <img src={`${project.cover_url}/400x400.jpg`} />
         </div>
         <div className="text-gray-700 py-4 text-gray-700">
-          {project.description}
+          <RichText richText={project.description} />
         </div>
         <div className="bottom-0 fixed w-full bg-gray-100 pb-10 pt-6">
           <Link

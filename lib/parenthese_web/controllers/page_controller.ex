@@ -1,6 +1,7 @@
 defmodule ParentheseWeb.PageController do
   use ParentheseWeb, :controller
 
+  alias Parenthese.RichText
   alias Parenthese.Projects
   alias Parenthese.Publications
   alias ParentheseWeb.LayoutView
@@ -24,7 +25,9 @@ defmodule ParentheseWeb.PageController do
   end
 
   def map(conn, _params) do
-    projects = Projects.list_projects()
+    projects =
+      Projects.list_projects()
+      |> Enum.map(fn project -> Map.update!(project, :description, &RichText.from_draftjs/1) end)
 
     conn
     |> put_layout({LayoutView, "map_layout.html"})

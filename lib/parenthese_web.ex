@@ -42,6 +42,7 @@ defmodule ParentheseWeb do
 
       import ParentheseWeb.ErrorHelpers
       import ParentheseWeb.Gettext
+      import ParentheseWeb.RichTextView
       alias ParentheseWeb.Router.Helpers, as: Routes
     end
   end
