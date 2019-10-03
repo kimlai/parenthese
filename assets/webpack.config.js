@@ -32,7 +32,8 @@ module.exports = (env, options) => ({
             extractor: TailwindExtractor,
             extensions: ["html", "js", "eex"]
           }
-        ]
+        ],
+        whitelist: ["is-open"] // this class is added dynamically by micromodal.js
       })
     ]
   },
