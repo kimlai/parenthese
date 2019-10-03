@@ -10,9 +10,11 @@ services:
 
 before_script:
     - mix do ecto.create, ecto.migrate
+    - (cd assets && npm install)
 
 script:
     - mix test
+    - cd assets && npm test
 
 cache:
     directories:

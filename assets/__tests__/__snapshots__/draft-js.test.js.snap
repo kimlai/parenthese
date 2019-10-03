@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`convertToRaw matches the format saved in our database 1`] = `
+Object {
+  "blocks": Array [
+    Object {
+      "data": Object {},
+      "depth": 0,
+      "entityRanges": Array [],
+      "inlineStyleRanges": Array [
+        Object {
+          "length": 5,
+          "offset": 7,
+          "style": "BOLD",
+        },
+      ],
+      "key": Any<String>,
+      "text": "héllo world",
+      "type": "unstyled",
+    },
+  ],
+  "entityMap": Object {},
+}
+`;
