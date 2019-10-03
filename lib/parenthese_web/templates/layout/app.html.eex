@@ -56,6 +56,12 @@
         <%= render @view_module, @view_template, assigns %>
       </div>
     </main>
+
+    <div id="modal">
+      <%= if assigns[:modal_template] do %>
+        <%= render @view_module, assigns[:modal_template], assigns %>
+      <% end %>
+    </div>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

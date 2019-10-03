@@ -22,7 +22,9 @@ const navigate = link => {
     const page = document.createElement("div");
     page.innerHTML = xhr.response;
     const content = page.querySelector("#content");
+    const modal = page.querySelector("#modal");
     document.getElementById("content").innerHTML = content.innerHTML;
+    document.getElementById("modal").innerHTML = modal.innerHTML;
     addClass(document.body, "content-loaded");
     removeClass(document.body, "content-loading");
     setTimeout(() => {

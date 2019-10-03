@@ -1,0 +1,46 @@
+<div id="videos-modal" class="modal" aria-hidden="true">
+  <!-- overlay -->
+  <div
+     tabindex="-1"
+     data-micromodal-close
+     class="overlay fixed inset-0 flex items-center justify-center z-50 bg-gray-900-90"
+  >
+    <div
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="videos-modal-title"
+       class="w-full container mx-auto"
+    >
+      <header>
+        <h2 id="videos-modal-title" class="hidden">
+          Vidéos
+        </h2>
+      <button
+        class="modal__close text-gray-100 text-2xl mb-1"
+        aria-label="Fermer"
+        data-micromodal-close
+      ></button>
+      </header>
+      <div id="video-modal-content">
+        <%= for youtube_id <- @project.youtube_ids do %>
+          <div class="video-iframe-wrapper">
+            <iframe
+             type="text/html"
+             src="https://www.youtube.com/embed/<%= youtube_id %>?autoplay=0"
+             frameborder="0"
+            ></iframe>
+          </div>
+        <% end %>
+        <%= for vimeo_id <- @project.vimeo_ids do %>
+          <div class="video-iframe-wrapper">
+            <iframe
+             type="text/html"
+             src="https://player.vimeo.com/video/<%= vimeo_id %>"
+             frameborder="0"
+            ></iframe>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -15,22 +15,33 @@
 <button class="text-orange-500 font-semibold text-sm uppercase hidden" id="less" type="button">Voir moins</button>
 </div>
 <div class="md:flex items-start">
-  <div class="md:w-64 border border-gray-500 py-4 px-6 md:mr-8 mb-6 shadow">
-    <div class="pb-2 font-medium"><%= translate_category(@project.category) %></div>
-    <div class="text-gray-700"><%= @project.date %></div>
-    <div class="text-gray-700"><%= @project.location %></div>
-    <%= if @project.client do %>
-      <div class="text-gray-700 pt-4 text-sm">
-        Pour
-        <span class="text-gray-900 font-medium">
-          <%= if @project.client_website do %>
-            <a class="hover:text-orange-500" href="<%= @project.client_website %>" target="_blank" data-ignore-navigation>
+  <div class="md:w-64 md:mr-8">
+    <div class="border border-gray-500 py-4 px-6 mb-6 shadow">
+      <div class="pb-2 font-medium"><%= translate_category(@project.category) %></div>
+      <div class="text-gray-700"><%= @project.date %></div>
+      <div class="text-gray-700"><%= @project.location %></div>
+      <%= if @project.client do %>
+        <div class="text-gray-700 pt-4 text-sm">
+          Pour
+          <span class="text-gray-900 font-medium">
+            <%= if @project.client_website do %>
+              <a class="hover:text-orange-500" href="<%= @project.client_website %>" target="_blank" data-ignore-navigation>
+                <%= @project.client %>
+              </a>
+            <% else %>
               <%= @project.client %>
-            </a>
-          <% else %>
-            <%= @project.client %>
-          <% end %>
-        </span>
+            <% end %>
+          </span>
+        </div>
+      <% end %>
+    </div>
+    <%= if @project.youtube_ids !== [] || @project.vimeo_ids !== [] do %>
+      <div data-micromodal-trigger="videos-modal" class="relative cursor-pointer h-32 mb-6">
+        <div class="bg-gray-900-60 absolute inset-0 m-2"></div>
+        <img class="object-cover h-full w-full" src="<%= @project.cover_url %>/400x400.jpg" />
+        <div class="absolute inset-0 text-gray-300 flex items-center justify-center uppercase font-semibold">
+          Vidéo
+        </div>
       </div>
     <% end %>
   </div>

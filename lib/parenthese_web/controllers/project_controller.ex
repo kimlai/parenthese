@@ -51,7 +51,11 @@ defmodule ParentheseWeb.ProjectController do
           {:error, "Les photos n'ont pas pu être chargées"}
       end
 
-    render(conn, "show.html", project: project, photos: photos)
+    render(conn, "show.html",
+      project: project,
+      photos: photos,
+      modal_template: "videos_modal.html"
+    )
   end
 
   defp fetch_flickr_album(id) do

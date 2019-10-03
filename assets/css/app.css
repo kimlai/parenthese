@@ -131,4 +131,28 @@ h1 {
   }
 }
 
+.modal {
+  @apply hidden;
+}
+.modal.is-open {
+  @apply block;
+}
+.modal__close:before {
+  content: "\2715";
+}
+
+.video-iframe-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+.video-iframe-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 @tailwind utilities;
