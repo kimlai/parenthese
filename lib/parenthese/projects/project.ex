@@ -4,6 +4,7 @@ defmodule Parenthese.Projects.Project do
 
   @derive {Jason.Encoder, except: [:__meta__]}
   schema "projects" do
+    field :budget, :string
     field :date, :string
     field :short_description, :string
     field :description, :string
@@ -38,7 +39,8 @@ defmodule Parenthese.Projects.Project do
       :category,
       :cover_url,
       :client,
-      :client_website
+      :client_website,
+      :budget
     ])
     |> validate_required([
       :title,

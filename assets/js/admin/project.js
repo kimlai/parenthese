@@ -215,6 +215,14 @@ const Form = () => {
             defaultValue={changes.client_website || project.client_website}
           />
           <Error>{errors.client_website}</Error>
+
+          <Label htmlFor="budget">Budget</Label>
+          <Input
+            id="budget"
+            name="project[budget]"
+            defaultValue={changes.budget || project.budget}
+          />
+          <Error>{errors.budget}</Error>
         </div>
 
         <div className="w-full md:w-3/4 md:pl-12">

@@ -20,6 +20,7 @@
       <div class="pb-2 font-medium"><%= translate_category(@project.category) %></div>
       <div class="text-gray-700"><%= @project.date %></div>
       <div class="text-gray-700"><%= @project.location %></div>
+      <div class="text-gray-700"><%= @project.budget %></div>
       <%= if @project.client do %>
         <div class="text-gray-700 pt-4 text-sm">
           Pour
