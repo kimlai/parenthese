@@ -303,8 +303,8 @@ const Form = () => {
         </div>
       </div>
 
-      <div className="mt-8 flex">
-        <div className="w-2/5">
+      <div className="mt-8 flex flex-col md:flex-row">
+        <div className="md:w-2/5">
           <Label htmlFor="location">
             Lieu{" "}
             <span className="font-normal text-gray-600 ml-2">
@@ -349,8 +349,8 @@ const Form = () => {
           <Error>{errors.location_coordinates}</Error>
         </div>
         <div
-          style={{ height: "600px" }}
-          className="md:w-3/5 p-6"
+          style={{ height: "500px" }}
+          className="md:w-3/5 md:p-6"
           id="map-container"
           ref={mapRef}
         ></div>

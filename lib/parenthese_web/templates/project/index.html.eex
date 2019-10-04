@@ -46,8 +46,10 @@
       <td class="hidden lg:table-cell px-4 py-4"><%= project.date %></td>
 
       <td class="px-4 py-4 text-sm">
-        <%= link "Éditer", to: Routes.project_path(@conn, :edit, project), class: "px-2 hover:text-teal-500" %>
-        <%= link "Supprimer", to: Routes.project_path(@conn, :delete, project), method: :delete, data: [confirm: "Êtes-vous sûr ?"], class: "hover:text-red-500"%>
+        <div class="flex flex-wrap">
+          <%= link "Éditer", to: Routes.project_path(@conn, :edit, project), class: "hover:text-teal-500" %>
+          <%= link "Supprimer", to: Routes.project_path(@conn, :delete, project), method: :delete, data: [confirm: "Êtes-vous sûr ?"], class: "hover:text-red-500"%>
+        </div>
       </td>
     </tr>
 <% end %>
