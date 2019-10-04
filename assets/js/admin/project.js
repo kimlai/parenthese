@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Menu, MenuList, MenuButton, MenuItem } from "@reach/menu-button";
 import "@reach/menu-button/styles.css";
@@ -11,6 +11,7 @@ import {
   convertFromRaw
 } from "draft-js";
 import "draft-js/dist/Draft.css";
+import mapboxgl from "mapbox-gl";
 import classnames from "classnames";
 import PlaceInput from "./PlaceInput";
 
@@ -143,6 +144,34 @@ const Form = () => {
     setEditorState(RichUtils.toggleInlineStyle(editorState, "BOLD"));
   };
 
+  const mapRef = React.createRef();
+  const [map, setMap] = useState();
+  useEffect(
+    () => initializeMap(mapRef.current, setMap, locationCoordinates),
+    []
+  );
+
+  const [locationCoordinates, setLocationCoordinates] = useState(
+    changes.location_coordinates || project.location_coordinates
+  );
+  const updateLocationCoordinatesInput = e => {
+    const [lat, lng] = e.target.value.split(",").map(s => s.trim());
+    updateLocationCoordinates({ lat, lng });
+  };
+  const updateLocationCoordinates = ({ lat, lng }) => {
+    map.getSource("project").setData({
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [lng, lat]
+      }
+    });
+    map.flyTo({
+      center: [lng, lat]
+    });
+    setLocationCoordinates({ lat, lng });
+  };
+
   return (
     <form
       acceptCharset="UTF-8"
@@ -152,23 +181,16 @@ const Form = () => {
     >
       {method === "put" && <input type="hidden" name="_method" value="put" />}
       <input name="_csrf_token" type="hidden" value={window.csrfToken} />
+      <Label htmlFor="title">Titre</Label>
+      <div className="text-xl">
+        <Input id="title" name="project[title]" type="text" />
+      </div>
+      <Error>{errors.title}</Error>
       <div className="flex flex-col md:flex-row">
         <div className="w-full md:w-1/4">
-          <Label htmlFor="title">Titre</Label>
-          <Input id="title" name="project[title]" type="text" />
-          <Error>{errors.title}</Error>
-
           <Label htmlFor="date">Date de réalisation</Label>
           <Input id="date" name="project[date]" type="text" />
           <Error>{errors.date}</Error>
-
-          <Label htmlFor="location">Lieu</Label>
-          <PlaceInput
-            id="location"
-            name="project[location]"
-            location={changes.location || project.location}
-          />
-          <Error>{errors.location}</Error>
 
           <Label htmlFor="status">Status</Label>
           <input
@@ -263,7 +285,7 @@ const Form = () => {
               B
             </button>
             <div
-              style={{ "min-height": "380px" }}
+              style={{ minHeight: "380px" }}
               className={classnames(
                 "border px-3 py-2 rounded-sm focus:border-blue-500 bg-gray-100",
                 { "border-red-700": errors.description }
@@ -280,6 +302,60 @@ const Form = () => {
           <Error>{errors.description}</Error>
         </div>
       </div>
+
+      <div className="mt-8 flex">
+        <div className="w-2/5">
+          <Label htmlFor="location">
+            Lieu{" "}
+            <span className="font-normal text-gray-600 ml-2">
+              affiché sur la carte d'identité du projet
+            </span>
+          </Label>
+          <Input
+            id="location"
+            name="project[location]"
+            location={changes.location || project.location}
+          />
+          <Error>{errors.location}</Error>
+
+          <Label htmlFor="project[location_address]">
+            Adresse exacte
+            <span className="font-normal text-gray-600 ml-2">
+              utilisée pour placer le projet sur la carte
+            </span>
+          </Label>
+          <PlaceInput
+            id="location_address"
+            name="project[location_address]"
+            address={changes.location_address || project.location_address}
+            onSelect={updateLocationCoordinates}
+          />
+          <Error>{errors.location_address}</Error>
+
+          <Label htmlFor="project[location_coordinates]">
+            Coordonnées GPS (lat, lng)
+          </Label>
+          <Input
+            id="location_coordinates"
+            name="project[location_coordinates]"
+            placeholder="( ... , ... )"
+            value={
+              locationCoordinates
+                ? `${locationCoordinates.lat}, ${locationCoordinates.lng}`
+                : ""
+            }
+            onChange={updateLocationCoordinatesInput}
+          />
+          <Error>{errors.location_coordinates}</Error>
+        </div>
+        <div
+          style={{ height: "600px" }}
+          className="md:w-3/5 p-6"
+          id="map-container"
+          ref={mapRef}
+        ></div>
+      </div>
+
       <div className="mt-8">
         <Label>Youtube</Label>
         <div className="w-full md:w-2/5">
@@ -367,6 +443,48 @@ const Form = () => {
       </button>
     </form>
   );
+};
+
+const initializeMap = (ref, setMap, location) => {
+  mapboxgl.accessToken =
+    "pk.eyJ1Ijoia2ltbGFpIiwiYSI6ImNpdHg4b3psMDAwMnAzd29hZ2VrbzVmeTcifQ.JEzjYNojtEPRBove3beibA";
+  const map = new mapboxgl.Map({
+    container: ref,
+    style: "mapbox://styles/kimlai/ck11ws8pt0lqz1cqgu2ufbfhp",
+    center: [3, 45.5],
+    zoom: 5,
+    fadeDuration: 80
+  });
+
+  map.on("load", () => {
+    const geometry = location
+      ? { type: "Point", coordinates: [location.lng, location.lat] }
+      : null;
+    map.addSource("project", {
+      type: "geojson",
+      data: {
+        type: "Feature",
+        geometry
+      }
+    });
+
+    map.addLayer({
+      id: "markers",
+      type: "symbol",
+      source: "project",
+      layout: {
+        "icon-image": "marker-15",
+        "icon-allow-overlap": true,
+        "icon-anchor": "bottom"
+      },
+      paint: {
+        "text-color": "#1A202C",
+        "text-halo-color": "#F7FAFC",
+        "text-halo-width": 1
+      }
+    });
+    setMap(map);
+  });
 };
 
 ReactDOM.render(<Form />, document.getElementById("react-root"));

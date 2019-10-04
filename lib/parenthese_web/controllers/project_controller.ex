@@ -17,16 +17,19 @@ defmodule ParentheseWeb.ProjectController do
   end
 
   def create(conn, %{"project" => project_params}) do
-    project_params = upload_cover(project_params)
+    project_params =
+      project_params
+      |> parse_location_coordinates()
+      |> upload_cover
 
     case Projects.create_project(project_params) do
       {:ok, project} ->
-        conn
-        |> put_flash(:info, "Project created successfully.")
-        |> redirect(to: Routes.project_path(conn, :show, project))
+        redirect(conn, to: Routes.project_path(conn, :show, project))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        conn
+        |> put_flash(:error, "La saisie comporte des erreurs. Le projet n'a pas été enregistré.")
+        |> render("new.html", changeset: changeset)
     end
   end
 
@@ -87,20 +90,29 @@ defmodule ParentheseWeb.ProjectController do
       project_params
       |> Map.put_new("youtube_ids", [])
       |> Map.put_new("vimeo_ids", [])
+      |> parse_location_coordinates()
       |> upload_cover()
 
     project = Projects.get_project!(id)
 
     case Projects.update_project(project, project_params) do
       {:ok, project} ->
-        conn
-        |> put_flash(:info, "Project updated successfully.")
-        |> redirect(to: Routes.project_path(conn, :show, project))
+        redirect(conn, to: Routes.project_path(conn, :show, project))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", project: project, changeset: changeset)
+        conn
+        |> put_flash(:error, "La saisie comporte des erreurs. Le projet n'a pas été enregistré.")
+        |> render("edit.html", project: project, changeset: changeset)
     end
   end
+
+  defp parse_location_coordinates(%{"location_coordinates" => coordinates} = params) do
+    [lat, lng] = String.split(coordinates, ",")
+
+    Map.put(params, "location_coordinates", %{lat: String.trim(lat), lng: String.trim(lng)})
+  end
+
+  defp parse_location_coordinates(params), do: params
 
   defp upload_cover(%{"cover" => %Plug.Upload{} = cover} = project_params) do
     uuid = Ecto.UUID.generate()

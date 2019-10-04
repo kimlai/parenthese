@@ -34,6 +34,7 @@ defmodule Parenthese.Projects.Project do
       :youtube_ids,
       :vimeo_ids,
       :location,
+      :location_coordinates,
       :status,
       :date,
       :category,
