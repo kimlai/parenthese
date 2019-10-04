@@ -31,8 +31,17 @@
               <%= topbar_title conn: @conn, action: :contact, text: "Contact" %>
             </div>
           </div>
-          <div class="w-10 mr-5 text-gray-600 md:mr-0 md:text-gray-900 md:block md:w-24">
-            <svg id="logo" class="fill-current" viewBox="0 0 110 76">
+          <div class="hidden md:block mr-0 text-gray-900">
+            <svg id="logo" class="fill-current" viewBox="0 0 110 76" width="110" height="76">
+              <polygon points="0 0, 20 0, 20 8, 10 8,10 68, 20 68, 20 76, 0 76" />
+              <polygon points="110 0, 90 0, 90 8, 100 8, 100 68, 90 68, 90 76, 110 76" />
+              <rect id="logo-dot-1" x="28" y="48" width="12" height="12" />
+              <rect id="logo-dot-2" x="49" y="48" width="12" height="12" />
+              <rect id="logo-dot-3" x="70" y="48" width="12" height="12" />
+            </svg>
+          </div>
+          <div class="mr-5 text-gray-600 md:hidden">
+            <svg id="logo" class="fill-current" viewBox="0 0 110 76" width="45" height="31">
               <polygon points="0 0, 20 0, 20 8, 10 8,10 68, 20 68, 20 76, 0 76" />
               <polygon points="110 0, 90 0, 90 8, 100 8, 100 68, 90 68, 90 76, 110 76" />
               <rect id="logo-dot-1" x="28" y="48" width="12" height="12" />
