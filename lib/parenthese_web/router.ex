@@ -35,6 +35,8 @@ defmodule ParentheseWeb.Router do
     get("/", ProjectController, :index)
     resources("/projects", ProjectController, except: [:show, :index])
     resources("/publications", PublicationController, except: [:show])
+
+    get("/flickr_photos/:flickr_id", ProjectController, :flickr_photos)
   end
 
   # Other scopes may use custom stacks.

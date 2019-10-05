@@ -14,4 +14,18 @@ input::placeholder {
   @apply text-gray-600;
 }
 
+.col-gap-0 {
+  column-gap: 0;
+}
+
+.col-3 {
+  column-count: 3;
+}
+
+@media (min-width: 768px) {
+  .md\:col-9 {
+    column-count: 9;
+  }
+}
+
 @tailwind utilities;

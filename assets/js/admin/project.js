@@ -14,6 +14,7 @@ import "draft-js/dist/Draft.css";
 import mapboxgl from "mapbox-gl";
 import classnames from "classnames";
 import PlaceInput from "./PlaceInput";
+import FlickrInput from "./FlickrInput";
 
 const Label = props => (
   <label
@@ -423,9 +424,11 @@ const Form = () => {
             ))}
           </div>
         </div>
-        <div className="w-full md:w-1/4 mb-8">
+        <div className="w-full mb-8">
           <Label htmlFor="flickr_id">Flickr id</Label>
-          <Input id="flickr_id" name="project[flickr_id]" type="text" />
+          <FlickrInput
+            flickrId={changes[changes.flickr_id] || project.flickr_id}
+          />
           <Error>{errors.flickr_id}</Error>
         </div>
       </div>

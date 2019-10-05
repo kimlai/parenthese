@@ -36,29 +36,44 @@ defmodule ParentheseWeb.ProjectController do
   def show(conn, %{"id" => id}) do
     project = Projects.get_project!(id)
 
-    photos =
-      with {:ok, 200, _, client_ref} <- fetch_flickr_album(project.flickr_id),
-           {:ok, body} <- :hackney.body(client_ref),
-           {:ok, %{"stat" => "ok", "photoset" => photoset}} <- Jason.decode(body) do
-        {:ok, photoset["photo"]}
-      else
-        {:error, _} ->
-          {:error, "Les photos n'ont pas pu être chargées"}
-
-        {:ok, %{"stat" => "fail", "message" => message}} ->
-          Logger.error("""
-            Failed to fetch Flickr album #{project.flickr_id} for project #{id}
-            Error message: #{message}
-          """)
-
-          {:error, "Les photos n'ont pas pu être chargées"}
-      end
+    photos = fetch_photos(project.flickr_id)
 
     render(conn, "show.html",
       project: project,
       photos: photos,
       modal_template: "videos_modal.html"
     )
+  end
+
+  def flickr_photos(conn, %{"flickr_id" => flickr_id}) do
+    case fetch_photos(flickr_id) do
+      {:ok, photos} ->
+        json(conn, photos)
+
+      {:error, error} ->
+        conn
+        |> put_status(500)
+        |> json(error)
+    end
+  end
+
+  defp fetch_photos(flickr_id) do
+    with {:ok, 200, _, client_ref} <- fetch_flickr_album(flickr_id),
+         {:ok, body} <- :hackney.body(client_ref),
+         {:ok, %{"stat" => "ok", "photoset" => photoset}} <- Jason.decode(body) do
+      {:ok, photoset["photo"]}
+    else
+      {:error, _} ->
+        {:error, "Les photos n'ont pas pu être chargées"}
+
+      {:ok, %{"stat" => "fail", "message" => message}} ->
+        Logger.error("""
+          Failed to fetch Flickr album #{flickr_id}
+          Error message: #{message}
+        """)
+
+        {:error, "Les photos n'ont pas pu être chargées"}
+    end
   end
 
   defp fetch_flickr_album(id) do
