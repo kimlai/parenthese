@@ -33,7 +33,11 @@ module.exports = (env, options) => ({
             extensions: ["html", "js", "eex"]
           }
         ],
-        whitelist: ["is-open"] // this class is added dynamically by micromodal.js
+        whitelist: [
+          "is-open", // this class is added dynamically by micromodal.js
+          "cube-right",
+          "cube-top"
+        ]
       })
     ]
   },
@@ -41,7 +45,8 @@ module.exports = (env, options) => ({
     app: glob.sync("./vendor/**/*.js").concat(["./js/app.js"]),
     admin: "./js/admin.js",
     adminProject: "./js/admin/project.js",
-    map: "./js/map.js"
+    map: "./js/map.js",
+    cube: "./js/cube.js"
   },
   output: {
     filename: "[name].js",

@@ -33,4 +33,10 @@ defmodule ParentheseWeb.PageController do
     |> put_layout({LayoutView, "map_layout.html"})
     |> render("map.html", projects: projects)
   end
+
+  def cube(conn, _params) do
+    conn
+    |> put_layout({LayoutView, "cube_layout.html"})
+    |> render("cube.html")
+  end
 end

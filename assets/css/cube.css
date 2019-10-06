@@ -1,0 +1,46 @@
+/* This file is for your main application css. */
+
+@tailwind base;
+
+@tailwind components;
+
+.cube {
+  @apply bg-gray-900;
+  font-family: "Press Start 2P", cursive;
+  font-size: 8px;
+}
+.cube-top {
+  @apply bg-gray-800;
+}
+.cube-right {
+  background: #232b38;
+}
+
+.cube,
+.cube-top,
+.cube-right {
+  box-shadow: inset 0 0 0 0.25em hsla(0, 0%, 0%, 0.1);
+}
+.cube,
+.cube-top,
+.cube-right {
+  position: absolute;
+}
+
+.cube {
+  transform: scaleY(1.1) skewY(30deg) translateY(50%);
+}
+
+.cube-top {
+  content: "";
+  top: 0;
+  transform: translateY(-109%) skewX(-40deg) translateX(-50%) scaleY(1.19);
+}
+
+.cube-right {
+  content: "";
+  top: 0;
+  transform: skewY(-50deg) translateX(0%) translateY(-60%);
+}
+
+@tailwind utilities;
