@@ -155,4 +155,10 @@ h1 {
   height: 100%;
 }
 
+@media (min-width: 640px) {
+  .sm\:pb-full {
+    padding-bottom: 100%;
+  }
+}
+
 @tailwind utilities;
