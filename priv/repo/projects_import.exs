@@ -103,9 +103,14 @@ defmodule Import do
       )
 
     {:ok, body} = :hackney.body(client_ref)
-    %{"hits" => [%{"_geoloc" => coordinates} | _]} = Jason.decode!(body)
 
-    coordinates
+    case Jason.decode!(body) do
+      %{"hits" => [%{"_geoloc" => coordinates} | _]} ->
+        coordinates
+
+      _ ->
+        nil
+    end
   end
 end
 
