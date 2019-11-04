@@ -10,6 +10,7 @@ const navigate = link => {
 
   markActiveLink(link.id);
 
+  document.getElementById("content").innerHTML = "";
   let contentLoaded = false;
 
   xhr.abort(); // in case a previous navigation request was sent
