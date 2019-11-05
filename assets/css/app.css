@@ -383,4 +383,51 @@ main {
   padding-bottom: 100%;
 }
 
+/********
+ * PONG *
+ ********/
+#logo {
+  cursor: pointer;
+}
+@keyframes pong-logo-intro {
+  100% {
+    transform: translateY(154px);
+  }
+}
+@keyframes pong-logo-outro {
+  0% {
+    transform: translateY(154px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+#logo.pong {
+  animation: 500ms pong-logo-intro forwards;
+  animation-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+}
+#logo.pong-outro {
+  animation: 500ms pong-logo-outro forwards;
+  animation-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+}
+#pong-stage {
+  position: absolute;
+  display: none;
+  cursor: none;
+  top: 165px;
+  left: 50%;
+  margin-left: -300px;
+  z-index: 999;
+}
+#pong-stage.active {
+  display: block;
+}
+
+.cat {
+  position: absolute;
+  z-index: 30;
+  top: 20px;
+  right: 20px;
+}
+
 @tailwind utilities;

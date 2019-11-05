@@ -46,6 +46,7 @@ module.exports = (env, options) => ({
     admin: "./js/admin.js",
     adminProject: "./js/admin/project.js",
     map: "./js/map.js",
+    pong: "./js/pong.js",
     cube: "./js/cube.js"
   },
   output: {

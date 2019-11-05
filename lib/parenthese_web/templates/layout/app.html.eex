@@ -7,6 +7,7 @@
     <title>Parenthèse</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet">
   </head>
   <body class="bg-gray-100 text-gray-900 overflow-y-scroll">
     <header class="container mx-auto">
@@ -74,5 +75,8 @@
       <% end %>
     </div>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+    <script type="text/javascript" src="https://code.createjs.com/1.0.0/easeljs.min.js" async defer></script>
+    <script type="text/javascript" src="https://code.createjs.com/1.0.0/tweenjs.min.js" async defer></script>
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/pong.js") %>" async defer></script>
   </body>
 </html>
