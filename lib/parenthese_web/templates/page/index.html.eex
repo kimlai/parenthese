@@ -39,7 +39,7 @@
             <%= project.title %>
           </div>
           <div class="pt-1 text-sm text-gray-700 truncate">
-            <%= project.short_description %>
+            <%= project.very_short_description %>
           </div>
         </a>
       </li>

@@ -6,6 +6,7 @@ defmodule Parenthese.Projects.Project do
   schema "projects" do
     field :budget, :string
     field :date, :string
+    field :very_short_description, :string
     field :short_description, :string
     field :description, :string
     field :flickr_id, :string
@@ -28,6 +29,7 @@ defmodule Parenthese.Projects.Project do
     project
     |> cast(attrs, [
       :title,
+      :very_short_description,
       :short_description,
       :description,
       :flickr_id,

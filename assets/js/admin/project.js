@@ -258,6 +258,16 @@ const Form = () => {
           />
           <Error>{errors.cover_url}</Error>
 
+          <Label htmlFor="very_short_description">
+            Description très courte
+          </Label>
+          <Input
+            id="very_short_description"
+            name="project[very_short_description]"
+            type="text"
+          />
+          <Error>{errors.very_short_description}</Error>
+
           <Label htmlFor="short_description">Description courte</Label>
           <Input
             id="short_description"
