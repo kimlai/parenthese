@@ -157,4 +157,13 @@ body {
   }
 }
 
+.project-details-sidebar {
+  flex-shrink: 0;
+  flex-basis: 27ch;
+}
+
+#description div > p + p {
+  margin-top: 0.75rem;
+}
+
 @tailwind utilities;
