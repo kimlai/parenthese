@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Parenthèse</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/cube.css") %>"/>
-    <link rel="stylesheet" href="https://use.typekit.net/nqt3mmo.css">
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
   </head>
-  <body class="w-full h-full bg-gray-200 text-gray-900 overflow-y-scroll font-proxima-nova">
+  <body class="w-full h-full bg-gray-200 text-gray-900 overflow-y-scroll">
     <%= render @view_module, @view_template, assigns %>
   </body>
 </html>

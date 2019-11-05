@@ -2,9 +2,9 @@
 
 @tailwind components;
 
-div,
-p {
-  font-family: "Proxima-Nova";
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
 }
 
 #map-container {

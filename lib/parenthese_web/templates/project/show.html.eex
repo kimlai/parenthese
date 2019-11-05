@@ -1,5 +1,5 @@
 <header class="border-b border-gray-500">
-  <h1 id="project-title" class="text-center text-3xl pt-8 pb-4 uppercase tracking-wide font-medium">
+  <h1 id="project-title" class="text-center text-3xl pt-8 pb-4 uppercase tracking-wider font-black">
     <%= @project.title %>
   </h1>
   <div class="text-center pb-6 text-xl">

@@ -4,6 +4,10 @@
 
 @tailwind components;
 
+body {
+  font-family: "Roboto", sans-serif;
+}
+
 /* Reach UI */
 [data-reach-menu-item][data-selected] {
   @apply bg-blue-600;

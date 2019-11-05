@@ -7,9 +7,9 @@
     <title>Admin - Parenthèse</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/admin.css") %>"/>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/adminProject.css") %>"/>
-    <link rel="stylesheet" href="https://use.typekit.net/nqt3mmo.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-gray-200 font-proxima-nova">
+  <body class="bg-gray-200">
     <div class="p-4 border-b border-gray-400 text-gray-700">
       <nav class="container mx-auto flex items-center">
         <div class="w-16 pr-4 text-gray-900">
