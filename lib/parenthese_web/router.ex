@@ -11,6 +11,7 @@ defmodule ParentheseWeb.Router do
 
   pipeline :admin do
     plug(:put_layout, {ParentheseWeb.LayoutView, "admin.html"})
+    plug BasicAuth, use_config: {:parenthese, :admin_auth}
   end
 
   pipeline :api do

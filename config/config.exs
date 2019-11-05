@@ -34,3 +34,9 @@ config :gettext, :default_locale, "fr"
 config :ex_aws,
   json_codec: Jason,
   region: "eu-west-1"
+
+config :parenthese,
+  admin_auth: [
+    username: {:system, "BASIC_AUTH_USERNAME"},
+    password: {:system, "BASIC_AUTH_PASSWORD"}
+  ]
