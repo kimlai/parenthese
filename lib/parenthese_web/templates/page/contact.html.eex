@@ -1,3 +1,16 @@
-<section class="text-xl md:text-4xl pt-16 text-center">
-  collectifparenthese@gmail.com
+<section>
+  <p class="text-xl md:text-4xl py-16 text-center">
+    collectifparenthese@gmail.com
+  </p>
+  <ul class="flex justify-center">
+    <li>
+      <a data-ignore-navigation class="px-4" href="https://www.facebook.com/collectifparenthese">Facebook</a>
+    </li>
+    <li>
+      <a data-ignore-navigation class="px-4" href="https://vimeo.com/collectifparenthese">Vimeo</a>
+    </li>
+    <li>
+      <a data-ignore-navigation class="px-4" href="https://www.flickr.com/photos/collectifparenthese/sets/">Flickr</a>
+    </li>
+  </ul>
 </section>
