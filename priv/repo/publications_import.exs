@@ -18,11 +18,15 @@ defmodule Import do
       id: row.id,
       date: row.date,
       journal: row.journal,
-      inserted_at: NaiveDateTime.from_iso8601!(row.created),
+      inserted_at: translate_date(row.created),
       title: row.title,
       project: row.project,
       url: row.url
     }
+  end
+
+  def translate_date({date, {hour, minute, second, _}}) do
+    NaiveDateTime.from_erl!({date, {hour, minute, second}})
   end
 end
 
