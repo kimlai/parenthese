@@ -28,6 +28,7 @@ defmodule ParentheseWeb.PageController do
     projects =
       Projects.list_projects()
       |> Enum.map(fn project -> Map.update!(project, :description, &RichText.from_draftjs/1) end)
+      |> Enum.filter(fn project -> project.location_coordinates != nil end)
 
     conn
     |> put_layout({LayoutView, "map_layout.html"})
