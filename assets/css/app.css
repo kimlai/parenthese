@@ -4,10 +4,41 @@
 
 @tailwind components;
 
+:root {
+  --ratio: 1.2;
+  --measure: 80ch;
+  --s-6: calc(var(--s-5) / var(--ratio));
+  --s-5: calc(var(--s-4) / var(--ratio));
+  --s-4: calc(var(--s-3) / var(--ratio));
+  --s-3: calc(var(--s-2) / var(--ratio));
+  --s-2: calc(var(--s-1) / var(--ratio));
+  --s-1: calc(var(--s0) / var(--ratio));
+  --s0: 1rem;
+  --s1: calc(var(--s0) * var(--ratio));
+  --s2: calc(var(--s1) * var(--ratio));
+  --s3: calc(var(--s2) * var(--ratio));
+  --s4: calc(var(--s3) * var(--ratio));
+  --s5: calc(var(--s4) * var(--ratio));
+  --s6: calc(var(--s5) * var(--ratio));
+  --s7: calc(var(--s6) * var(--ratio));
+  --s8: calc(var(--s7) * var(--ratio));
+  font-size: calc(0.1vw + 1em);
+}
+
 body {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
 }
+
+h1 {
+  @apply text-center text-3xl tracking-wider font-black uppercase;
+  padding-top: var(--s4);
+  padding-bottom: var(--s0);
+}
+
+/********
+ * LOGO *
+ ********/
 
 @keyframes dot1 {
   O% {
@@ -61,6 +92,23 @@ body {
   animation: 1.2s dot3 infinite;
 }
 
+.logo-wrapper {
+  padding: var(--s3) 0;
+}
+
+/**************
+ * NAVIGATION *
+ **************/
+nav a {
+  font-size: calc(var(--s0));
+  padding: var(--s0);
+  display: inline-block;
+}
+
+/**********************
+ * CONTENT NAVIGATION *
+ **********************/
+
 @keyframes content-loading {
   from {
     transform: translateY(0);
@@ -109,9 +157,21 @@ body {
   animation-fill-mode: forwards;
 }
 
+/*********
+ * ABOUT *
+ *********/
+
 #about-content {
   max-width: 700px;
   margin: 0 auto;
+}
+
+/****************
+ * PROJECT LIST *
+ ****************/
+
+.project-list-nav li {
+  padding: var(--s0);
 }
 
 .category-filter.active {
@@ -125,6 +185,55 @@ body {
   .navbar-item.active {
     @apply text-gray-900;
   }
+}
+
+/* grid stolen from https://inclusive-components.design/cards/ */
+#project-list .project {
+  max-width: 300px;
+}
+#project-list > .project + .project {
+  margin-top: var(--s0);
+}
+@supports (display: grid) {
+  #project-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    grid-gap: var(--s3) var(--s0);
+  }
+  #project-list > .project + .project {
+    margin-top: 0;
+  }
+}
+
+/*******************
+ * PROJECT DETAILS *
+ *******************/
+
+.project-details--short-description {
+  padding-bottom: var(--s4);
+}
+
+.project-details--content {
+  margin-top: var(--s4);
+}
+
+.project-details-sidebar {
+  flex-shrink: 0;
+  flex-basis: 27ch;
+}
+.project-details-sidebar {
+  margin-right: var(--s4);
+}
+.project-details-sidebar > * + * {
+  margin-top: var(--s4);
+}
+.project-details--infobox {
+  margin-top: 0.2em;
+  padding: var(--s0) var(--s2);
+}
+
+.project-details--photos li {
+  margin-top: var(--s2);
 }
 
 .modal {
@@ -151,19 +260,33 @@ body {
   height: 100%;
 }
 
-@media (min-width: 640px) {
-  .sm\:pb-full {
-    padding-bottom: 100%;
-  }
-}
-
-.project-details-sidebar {
-  flex-shrink: 0;
-  flex-basis: 27ch;
-}
-
 #description div > p + p {
   margin-top: 0.75rem;
+}
+
+/*************
+ * UTILITIES *
+ *************/
+
+.text-sm {
+  font-size: var(--s-1);
+}
+.text-3xl {
+  font-size: var(--s4);
+}
+.text-xl {
+  font-size: var(--s1);
+}
+
+.stack\:-4 > * + * {
+  margin-top: var(--s-4);
+}
+.stack\:-6 > * + * {
+  margin-top: var(--s-6);
+}
+
+.pb-full {
+  padding-bottom: 100%;
 }
 
 @tailwind utilities;
