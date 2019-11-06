@@ -34,8 +34,8 @@ body {
 
 h1 {
   @apply text-center text-3xl tracking-wider font-black uppercase;
-  padding-top: var(--s4);
-  padding-bottom: var(--s0);
+  padding-top: var(--s6);
+  padding-bottom: var(--s2);
 }
 
 /********
@@ -248,12 +248,24 @@ main {
   }
 }
 
+#project-list .project {
+  position: relative;
+}
+#project-list .project a::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: "";
+}
+
 /*******************
  * PROJECT DETAILS *
  *******************/
 
 .project-details--short-description {
-  padding-bottom: var(--s4);
+  padding-bottom: var(--s6);
 }
 
 .project-details--content > * + * {
