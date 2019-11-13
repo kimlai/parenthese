@@ -1,6 +1,7 @@
 // We need to import the CSS so that webpack will load it.
 // The MiniCssExtractPlugin is used to separate it out into
 // its own CSS file.
+import * as Sentry from "@sentry/browser";
 import Micromodal from "micromodal";
 import css from "../css/app.css";
 import { hasAttribute, idEq, onClickWhen, onClickWhenAncestor } from "./dom";
@@ -8,6 +9,10 @@ import startNavigation from "./navigation";
 import { openNavbar, closeNavbar } from "./navbar";
 import { filterProjects } from "./project-list";
 import { seeMore, seeLess } from "./project";
+
+Sentry.init({
+  dsn: "https://08031c6270284aacb97a6e3df9c0e6fd@sentry.io/1818197"
+});
 
 document.getElementById("sidebar-open").addEventListener("click", openNavbar);
 document.getElementById("sidebar-close").addEventListener("click", closeNavbar);
