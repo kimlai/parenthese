@@ -316,7 +316,6 @@ Pong.tick = function() {
     Pong.xspeed *= 1.05;
     Pong.yspeed *= 1.05;
     Pong.xspeed *= -1;
-    createjs.Sound.play("wall");
   }
 
   //cpu score :(
