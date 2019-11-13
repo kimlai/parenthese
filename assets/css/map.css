@@ -2,9 +2,45 @@
 
 @tailwind components;
 
+:root {
+  --ratio: 1.2;
+  --measure: 80ch;
+  --s-6: calc(var(--s-5) / var(--ratio));
+  --s-5: calc(var(--s-4) / var(--ratio));
+  --s-4: calc(var(--s-3) / var(--ratio));
+  --s-3: calc(var(--s-2) / var(--ratio));
+  --s-2: calc(var(--s-1) / var(--ratio));
+  --s-1: calc(var(--s0) / var(--ratio));
+  --s0: 1rem;
+  --s1: calc(var(--s0) * var(--ratio));
+  --s2: calc(var(--s1) * var(--ratio));
+  --s3: calc(var(--s2) * var(--ratio));
+  --s4: calc(var(--s3) * var(--ratio));
+  --s5: calc(var(--s4) * var(--ratio));
+  --s6: calc(var(--s5) * var(--ratio));
+  --s7: calc(var(--s6) * var(--ratio));
+  --s8: calc(var(--s7) * var(--ratio));
+  font-size: calc(0.05vw + 1em);
+  --line-height: 1.5rem;
+  line-height: var(--line-height);
+}
+
 body {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
+}
+
+.logo-wrapper {
+  padding: var(--s3) 0;
+}
+
+/**************
+ * NAVIGATION *
+ **************/
+nav a {
+  font-size: calc(var(--s0));
+  padding: var(--s0);
+  display: inline-block;
 }
 
 #map-container {
@@ -22,11 +58,11 @@ body {
 }
 
 .navbar-item.active {
-  @apply font-medium text-gray-100;
+  @apply font-black text-gray-100;
 }
 @media (min-width: 768px) {
   .navbar-item.active {
-    @apply font-medium text-gray-900;
+    @apply font-black text-gray-900;
   }
 }
 
