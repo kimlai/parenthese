@@ -27,7 +27,7 @@ defmodule ParentheseWeb.Router do
     get("/map", PageController, :map)
     get("/map/*path", PageController, :map)
     get("/publications", PageController, :publications)
-    get("/project/:id", ProjectController, :show)
+    get("/project/show/:id", ProjectController, :show)
     get("/cube", PageController, :cube)
   end
 
