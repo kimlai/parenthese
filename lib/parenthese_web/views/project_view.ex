@@ -26,5 +26,5 @@ defmodule ParentheseWeb.ProjectView do
   def translate_category("microArchi"), do: "Micro-Architecture"
   def translate_category("archi"), do: "Architecture"
   def translate_category("scenography"), do: "Scénographie"
-  def translate_category("pedagogy"), do: "Pédagogie"
+  def translate_category("teaching"), do: "Pédagogie"
 end
