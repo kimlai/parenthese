@@ -10,8 +10,8 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :parenthese, ParentheseWeb.Endpoint,
-  url: [scheme: "https", host: nil, port: 443],
-  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  url: [scheme: "https", host: "collectifparenthese.com", port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto], host: nil],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
