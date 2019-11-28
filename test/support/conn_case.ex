@@ -23,6 +23,17 @@ defmodule ParentheseWeb.ConnCase do
 
       # The default endpoint for testing
       @endpoint ParentheseWeb.Endpoint
+
+      defp use_basic_auth(conn) do
+        username = Application.get_env(:parenthese, :admin_auth)[:username]
+        password = Application.get_env(:parenthese, :admin_auth)[:password]
+
+        put_req_header(
+          conn,
+          "authorization",
+          "Basic " <> Base.encode64("#{username}:#{password}")
+        )
+      end
     end
   end
 

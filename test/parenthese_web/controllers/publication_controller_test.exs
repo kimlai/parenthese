@@ -26,28 +26,35 @@ defmodule ParentheseWeb.PublicationControllerTest do
 
   describe "index" do
     test "lists all publications", %{conn: conn} do
-      conn = get(conn, Routes.publication_path(conn, :index))
+      conn = conn |> use_basic_auth() |> get(Routes.publication_path(conn, :index))
       assert html_response(conn, 200) =~ ""
     end
   end
 
   describe "new publication" do
     test "renders form", %{conn: conn} do
-      conn = get(conn, Routes.publication_path(conn, :new))
+      conn = conn |> use_basic_auth() |> get(Routes.publication_path(conn, :new))
       assert html_response(conn, 200) =~ ""
     end
   end
 
   describe "create publication" do
     test "redirects to index when data is valid", %{conn: conn} do
-      conn = post(conn, Routes.publication_path(conn, :create), publication: @create_attrs)
+      conn =
+        conn
+        |> use_basic_auth()
+        |> post(Routes.publication_path(conn, :create), publication: @create_attrs)
 
       conn = get(conn, Routes.publication_path(conn, :index))
       assert html_response(conn, 200) =~ "some journal"
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
-      conn = post(conn, Routes.publication_path(conn, :create), publication: @invalid_attrs)
+      conn =
+        conn
+        |> use_basic_auth()
+        |> post(Routes.publication_path(conn, :create), publication: @invalid_attrs)
+
       assert html_response(conn, 200) =~ ""
     end
   end
@@ -56,7 +63,7 @@ defmodule ParentheseWeb.PublicationControllerTest do
     setup [:create_publication]
 
     test "renders form for editing chosen publication", %{conn: conn, publication: publication} do
-      conn = get(conn, Routes.publication_path(conn, :edit, publication))
+      conn = conn |> use_basic_auth() |> get(Routes.publication_path(conn, :edit, publication))
       assert html_response(conn, 200) =~ ""
     end
   end
@@ -66,7 +73,9 @@ defmodule ParentheseWeb.PublicationControllerTest do
 
     test "redirects when data is valid", %{conn: conn, publication: publication} do
       conn =
-        put(conn, Routes.publication_path(conn, :update, publication), publication: @update_attrs)
+        conn
+        |> use_basic_auth()
+        |> put(Routes.publication_path(conn, :update, publication), publication: @update_attrs)
 
       assert redirected_to(conn) == "#{Routes.publication_path(conn, :index)}#p-#{publication.id}"
 
@@ -76,7 +85,9 @@ defmodule ParentheseWeb.PublicationControllerTest do
 
     test "renders errors when data is invalid", %{conn: conn, publication: publication} do
       conn =
-        put(conn, Routes.publication_path(conn, :update, publication), publication: @invalid_attrs)
+        conn
+        |> use_basic_auth()
+        |> put(Routes.publication_path(conn, :update, publication), publication: @invalid_attrs)
 
       assert html_response(conn, 200) =~ ""
     end
@@ -86,7 +97,9 @@ defmodule ParentheseWeb.PublicationControllerTest do
     setup [:create_publication]
 
     test "deletes chosen publication", %{conn: conn, publication: publication} do
-      conn = delete(conn, Routes.publication_path(conn, :delete, publication))
+      conn =
+        conn |> use_basic_auth() |> delete(Routes.publication_path(conn, :delete, publication))
+
       assert redirected_to(conn) == Routes.publication_path(conn, :index)
     end
   end

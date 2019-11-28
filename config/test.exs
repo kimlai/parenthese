@@ -16,3 +16,9 @@ config :parenthese, ParentheseWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :parenthese,
+  admin_auth: [
+    username: "admin",
+    password: "admin"
+  ]
