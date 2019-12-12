@@ -115,7 +115,7 @@ const SelectedProject = ({ projectId, map }) => {
             Retour
           </Link>
           <a
-            href={`/project/${project.id}`}
+            href={`/project/show/${project.id}`}
             className=" uppercase bg-orange-500 hover:bg-orange-400 rounded ml-4 px-4 py-3 text-white font-bold"
           >
             Voir
