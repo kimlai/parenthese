@@ -289,7 +289,7 @@ main {
     .project-details--content {
       display: grid;
       align-items: start;
-      grid-template-columns: 27ch 1fr;
+      grid-template-columns: 30ch 1fr;
       grid-template-rows: auto 1fr;
       grid-gap: var(--s4);
     }
@@ -318,10 +318,7 @@ main {
   margin-top: 0.2em;
   padding: var(--s0) var(--s2);
 }
-.project-details--infobox > *:first-child {
-  margin-bottom: var(--s-2);
-}
-.project-details--infobox > *:nth-child(2) > * + * {
+.project-details--infobox > * + * {
   margin-top: var(--s-6);
 }
 
