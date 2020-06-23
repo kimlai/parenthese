@@ -17,14 +17,13 @@ defmodule ParentheseWeb.PageView do
     class = ["category-filter", "uppercase", "hover:text-orange-500"] ++ active_class
 
     ~E"""
-    <li
-      class="<%= Enum.join(class, " ") %>"
-    >
-    <a
-      data-category="<%= category %>"
-      data-ignore-navigation
-      href="<%= Routes.page_path(assigns.conn, :index, category: category) %>"
-    >
+    <li>
+      <a
+        class="<%= Enum.join(class, " ") %>"
+        data-category="<%= category %>"
+        data-ignore-navigation
+        href="<%= Routes.page_path(assigns.conn, :index, category: category) %>"
+      >
         <%= text %>
       </a>
     </li>
