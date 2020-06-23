@@ -11,12 +11,6 @@ const navigate = link => {
 };
 
 const startNavigation = () => {
-  // looks like Firefox needs this to handle the "back" button correctly
-  console.log("coucou");
-  addClass(document.body, "content-loaded");
-  removeClass(document.body, "content-loading");
-  removeClass(document.body, "logo-loading");
-
   document.addEventListener("click", e => {
     const link = closestLink(e.target);
     if (!link || link.hasAttribute("data-ignore-navigation")) {
@@ -24,6 +18,15 @@ const startNavigation = () => {
     }
     closeNavbar();
     navigate(link);
+  });
+
+  // when navigating using the "back" and "forward" buttons in Firefox, javascript is not
+  // re-executed, since the page is retreived from the "bf-cache". So to un-hide the content
+  // we need to explicitly manipulate the DOM when the page is shown.
+  window.addEventListener("pageshow", () => {
+    addClass(document.body, "content-loaded");
+    removeClass(document.body, "content-loading");
+    removeClass(document.body, "logo-loading");
   });
 };
 

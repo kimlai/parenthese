@@ -32,6 +32,4 @@ onClickWhenAncestor(hasAttribute("data-micromodal-trigger"), ancestor => {
   });
 });
 
-console.log("lol");
-
 startNavigation();
