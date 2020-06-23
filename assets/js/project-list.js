@@ -9,6 +9,7 @@ const markActiveFilter = e => {
 };
 
 export const filterProjects = e => {
+  e.preventDefault();
   const category = e.target.getAttribute("data-category");
   const list = document.getElementById("project-list");
   const projects = document.getElementsByClassName("project");

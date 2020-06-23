@@ -13,12 +13,19 @@ defmodule Parenthese.Projects do
 
   ## Examples
 
-      iex> list_projects()
+      iex> list_projects("archi")
       [%Project{}, ...]
 
   """
-  def list_projects do
-    Project
+  def list_projects(category) do
+    query =
+      if category != nil do
+        Project |> where([p], p.category == ^category)
+      else
+        Project
+      end
+
+    query
     |> order_by(desc: :id)
     |> Repo.all()
   end

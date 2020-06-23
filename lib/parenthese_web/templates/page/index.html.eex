@@ -5,21 +5,11 @@
     </svg>
     <%= link "Voir sur une carte", to: Routes.page_path(@conn, :map), data: [ignore_navigation: true] %>
   </li>
-  <li data-category="all" class="category-filter active uppercase hover:text-orange-500 cursor-pointer">
-    Tout
-  </li>
-  <li data-category="archi" class="category-filter uppercase hover:text-orange-500 cursor-pointer">
-    Archi
-  </li>
-  <li data-category="microArchi" class="category-filter uppercase hover:text-orange-500 cursor-pointer">
-    Micro-Archi
-  </li>
-  <li data-category="scenography" class="category-filter uppercase hover:text-orange-500 cursor-pointer">
-    Scénographie
-  </li>
-  <li data-category="teaching" class="category-filter uppercase hover:text-orange-500 cursor-pointer">
-    Pédagogie
-  </li>
+  <%= category_filter("Tout", "all", Map.put(assigns, :active, true)) %>
+  <%= category_filter("Archi", "archi", Map.put(assigns, :active, false)) %>
+  <%= category_filter("Micro-Archi", "microArchi", Map.put(assigns, :active, false)) %>
+  <%= category_filter("Scénographie", "scenography", Map.put(assigns, :active, false)) %>
+  <%= category_filter("Pédagogie", "teaching", Map.put(assigns, :active, false)) %>
 </ul>
 <section>
   <ul id="project-list" class="text-sm">

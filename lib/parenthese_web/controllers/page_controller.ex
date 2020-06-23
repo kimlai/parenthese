@@ -6,8 +6,12 @@ defmodule ParentheseWeb.PageController do
   alias Parenthese.Publications
   alias ParentheseWeb.LayoutView
 
-  def index(conn, _params) do
-    projects = Projects.list_projects()
+  def index(conn, params) do
+    projects =
+      params
+      |> Map.get("category")
+      |> Projects.list_projects()
+
     render(conn, "index.html", projects: projects)
   end
 
