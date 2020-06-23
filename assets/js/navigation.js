@@ -11,6 +11,11 @@ const navigate = link => {
 };
 
 const startNavigation = () => {
+  // looks like Firefox needs this to handle the "back" button correctly
+  addClass(document.body, "content-loaded");
+  removeClass(document.body, "content-loading");
+  removeClass(document.body, "logo-loading");
+
   document.addEventListener("click", e => {
     const link = closestLink(e.target);
     if (!link || link.hasAttribute("data-ignore-navigation")) {
