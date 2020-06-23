@@ -1,13 +1,10 @@
 import { addClass, removeClass, closestLink } from "./dom";
-import { closeNavbar, markActiveLink } from "./navbar";
+import { closeNavbar } from "./navbar";
 
-let xhr = new XMLHttpRequest();
-
-const navigate = link => {
+const navigate = () => {
   removeClass(document.body, "content-loaded");
   addClass(document.body, "content-loading");
   addClass(document.body, "logo-loading");
-  markActiveLink(link.id);
 };
 
 const startNavigation = () => {
@@ -17,7 +14,7 @@ const startNavigation = () => {
       return;
     }
     closeNavbar();
-    navigate(link);
+    navigate();
   });
 
   // when navigating using the "back" and "forward" buttons in Firefox, javascript is not
