@@ -17,6 +17,10 @@ defmodule Parenthese.Projects do
       [%Project{}, ...]
 
   """
+  def list_projects() do
+    list_projects(nil)
+  end
+
   def list_projects(category) do
     query =
       if category != nil do
