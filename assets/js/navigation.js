@@ -12,6 +12,7 @@ const navigate = link => {
 
 const startNavigation = () => {
   // looks like Firefox needs this to handle the "back" button correctly
+  console.log("coucou");
   addClass(document.body, "content-loaded");
   removeClass(document.body, "content-loading");
   removeClass(document.body, "logo-loading");
