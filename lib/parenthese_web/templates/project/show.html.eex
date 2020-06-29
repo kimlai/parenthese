@@ -61,7 +61,7 @@
       <ul class="project-details--photos">
         <%= for photo <- photos do %>
           <li>
-            <img src="<%= flickr_url(photo) %>" />
+            <img loading="lazy" src="<%= flickr_url(photo) %>" alt="" />
           </li>
         <% end %>
       </ul>
