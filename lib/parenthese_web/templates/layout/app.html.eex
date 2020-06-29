@@ -51,7 +51,7 @@
             </svg>
           </div>
         </div>
-        <nav id="navigation" class="hidden pt-20 md:pt-0 fixed top-0 left-0 bottom-0 z-10 w-full md:relative md:block md:border-b border-gray-500 uppercase tracking-wide text-gray-700 bg-gray-900 md:bg-gray-100">
+        <nav id="navigation" class="hidden pt-20 md:pt-0 fixed top-0 left-0 bottom-0 z-10 w-full md:relative md:block md:border-b border-gray-500 uppercase tracking-wide text-gray-500 bg-gray-900 md:bg-gray-100 md:text-gray-700">
           <ul class="h-full md:flex md:justify-center">
             <%= navbar_item conn: @conn, action: :index, text: "Projets" %>
             <%= navbar_item conn: @conn, action: :about, text: "À propos" %>
