@@ -22,6 +22,7 @@
           <img
             class="w-full h-full absolute inset-0 object-cover border-2 border-gray-900"
             src="<%= project.cover_url %>/400x400.jpg"
+            alt=""
           />
         </div>
         <div>
