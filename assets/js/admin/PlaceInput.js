@@ -45,7 +45,7 @@ const PlaceInput = ({ onSelect }) => {
     <Combobox onSelect={onSelected}>
       <div className="relative">
         {isFetching && (
-          <div className="absolute top-0 right-0 p-2 text-gray-600">...</div>
+          <div className="absolute top-0 right-0 p-2 text-gray-700">...</div>
         )}
         <ComboboxInput
           className="location-input w-full border px-3 py-2 rounded-sm bg-gray-100 focus:border-blue-500"

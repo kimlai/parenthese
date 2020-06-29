@@ -287,7 +287,7 @@ const Form = () => {
           />
           <div>
             <button
-              className={classnames("p-1 font-semibold", "text-gray-600", {
+              className={classnames("p-1 font-semibold", "text-gray-700", {
                 "text-gray-900": editorState.getCurrentInlineStyle().has("BOLD")
               })}
               type="button"
@@ -318,7 +318,7 @@ const Form = () => {
         <div className="md:w-2/5">
           <Label htmlFor="location">
             Lieu{" "}
-            <span className="font-normal text-gray-600 ml-2">
+            <span className="font-normal text-gray-700 ml-2">
               affiché sur la carte d'identité du projet
             </span>
           </Label>
@@ -331,7 +331,7 @@ const Form = () => {
 
           <Label htmlFor="project[location_address]">
             Adresse exacte
-            <span className="font-normal text-gray-600 ml-2">
+            <span className="font-normal text-gray-700 ml-2">
               utilisée pour placer le projet sur la carte
             </span>
           </Label>

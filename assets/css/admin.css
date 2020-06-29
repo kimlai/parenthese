@@ -15,7 +15,7 @@ body {
 
 /* tailwind does not handle placeholder styles */
 input::placeholder {
-  @apply text-gray-600;
+  @apply text-gray-700;
 }
 
 .col-gap-0 {
