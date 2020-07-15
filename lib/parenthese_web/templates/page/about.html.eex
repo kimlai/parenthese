@@ -1,19 +1,103 @@
-<header>
-  <h1>
-    Le collectif
+<section id="about-content">
+  <div class="bg-gray-200 px-4">
+  <h1 class="mb-4 text-xl">
+    Collectif Parenthèse
   </h1>
-</header>
-<section id="about-content" class="md:text-justify">
+  <div class="center">
   <p class="mb-4">
-    Formé en 2012 par un groupe d’amis et architectes, le Collectif Parenthèse constitue un cadre de réflexion et d’expérimentation autour des pratiques de l’espace et de la ville. La volonté de créer différemment, questionner les disciplines et les métiers de l’architecture ainsi que ses méthodes de travail sont à l’origine de ce regroupement.
+    Créer ses propres conditions de travail, réunir le maximum de pratiques intellectuelles ou artisanales dans un environnement bienveillant. Tel est le cadre que le collectif s’est inventé.
   </p>
   <p class="mb-4">
-    L’élaboration de chacun des projets du collectif suit un processus complet, de l’idée au dessin et de la conception à la réalisation. Nous cherchons à développer une approche interactive, humaine et responsable de la création par le biais de tous les médiums disponibles qui suscitent notre intérêt. Architecture, scénographie, installations, graphisme, design, vidéo, photographie… sont autant de disciplines créatives où notre imaginaire et nos réflexions peuvent s’exprimer. Cette énergie se concrétise par l’élaboration d’installations éphémères, de mobilier urbain, de projections, de design d’objet mais aussi de créations purement artistiques.
+  Notre pratique est résolument hybride. L’architecture comme trame de fond, la <b>conception-construction</b> comme principe directeur et par-dessus tout la volonté de partager et apprendre.
   </p>
   <p class="mb-4">
-    L’espace public est à tous, la culture pour chacun, nous voulons offrir aux usagers d’une architecture, d’un quartier, d’un évènement, une expérience visuelle, physique et sociale.
+    Évoluer à la croisée des pratiques, avec l'innovation et la créativité comme stimulis, nous amène à développer une démarche coopérative. Chaque individu, chaque donnée contextuelle et chaque matériau deviennent des éléments constituants du processus de travail.
   </p>
   <p class="mb-4">
-    Maroua Bahij / Joris Bengounia / Rémi Chaudagne / Jean-Baptiste François / Virgile Ponsoye / Fabien Salhen / Rajh Sevagamy / Louis-Phong Viret 
+    Cette pratique du <b>“faire ensemble”</b> au travers d’une association de personnalités diverses qui, agrégées, mais aussi parfois en confrontation, donne lieu à une formidable alchimie.
   </p>
+  <div class="text-sm font-bold pb-16 mb-24">
+    <p>
+      Fabien Salhen, Jean-Baptiste François, Rémi Chaudagne, Phong Viret, Rajh Sevagamy, Joris Bengounia
+    </p>
+    <p>
+      Fondateurs du Collectif Parenthèse
+    </p>
+  </div>
+  </div>
+  </div>
+  <h2 class="font-bold text-2xl md:text-3xl mb-16">
+    <span class="text-3xl md:text-7xl">1.</span> Une entité regroupant des personnalités d'horizons différents
+  </h2>
+  <div class="mb-24 md:flex items-center">
+    <div class="mb-8 md:mb-0">
+      <img src="<%= Routes.static_path(@conn, "/images/about/01.jpg") %>"/>
+    </div>
+    <div class="side-text md:px-12">
+      <p class="mb-4">
+        Le Collectif Parenthèse s’est formé sur les bancs de l’école d’architecture, mû par la volonté commune de se confronter à la réalité, expérimenter et pratiquer différemment l’architecture. Le collectif se réunit autour de projets qui questionnent et investissent les domaines associés à l’architecture.
+      </p>
+      <p class="mb-4">
+        Qu’il s’agisse d’architecture éphémère, de scénographie ou d’interventions plastiques, les pratiques du collectif s’inscrivent dans une démarche expérimentale et dans une pluralité des médiums (architecture, scénographie, constructions, installations, graphisme, design, vidéo, photographie, pédagogie...), de la conception à la réalisation, en intérieur ou dans l’espace public.
+      </p>
+      <p class="mb-4">
+        Travaillant différentes échelles spatiales et temporelles, le collectif vise à créer des situations ludiques et évolutives où s’initient d’autres rapports aux usages et aux environnements architecturaux ou urbains.
+      </p>
+      <p class="font-bold">
+        “L’espace public est à tous, la culture pour chacun, le collectif veut offrir aux usagers d’une architecture, d’un quartier, d’un évènement, une expérience visuelle, physique et sociale.”
+      </p>
+    </div>
+  </div>
+  <h2 class="md:text-center font-bold text-2xl md:text-3xl mb-16">
+    <span class="text-3xl md:text-7xl">2.</span> Deux structures : une association et une société
+  </h2>
+  <div class="center">
+  <p class="mb-4">
+    La nature protéiforme du collectif que se soit dans les méthodes de travail ou les typologies de projets a généré deux structures distinctes sous un seul étendard. En fonction de la situation, des valeurs et des objectifs ciblés, nous choisissons de travailler avec l’une ou l’autre des deux structures.
+  </p>
+  <p class="mb-4">
+    L'association à but non lucratif vise à sensibiliser le grand public aux questions de l'architecture et de la fabrique de la ville ainsi que la place de ses usagers. L'apprentissage, le partage et la transmission de connaissances sont l’essence de cette structure, son action se matérialise par le biais de chantiers ouverts, workshops, événements, conférences...
+  </p>
+  <p class="mb-24">
+    La société répond de manière professionnelle et sous plusieurs formes à des projets dans les domaines de l'architecture, l'événementiel, la scénographie et le design d’objet. Dans cette optique l'Atelier propose de concevoir mais aussi réaliser ses projets, offrant un suivi complet tout au long du processus.
+  </p>
+  </div>
+  <h2 class="font-bold text-2xl md:text-3xl mb-16">
+    <span class="text-3xl md:text-7xl">3.</span> Le Fort d’Aubervilliers : ancrage local et rayonnement proche de la capitale
+  </h2>
+  <div class="mb-24 md:flex items-center">
+    <div class="side-text md:pr-12">
+      <p class="mb-4">
+        Notre atelier se trouve dans l’enceinte du Fort d’Aubervilliers, à trois stations de métros du centre Parisien. Une voute partiellement enterrée de l’ancienne fortification d’une superficie de 120m2 que nous avons aménagé et divisé en 2 sous-espaces : une atelier de conception / un atelier de construction.
+      </p>
+      <p class="mb-4">
+        Ancien fort militaire de 1840 à 1973, date de départ de l'armée, c'est ici que les stratégies de défense et les expériences scientifiques étaient élaborées.
+      </p>
+      <p class="mb-4">
+        Au début des années 90, des artistes de renom feront découvrir un autre aspect du Fort (Bartabas et son centre équestre Zingaro, Rachid Khimoune, , l’Art du lieu).
+      </p>
+      <p class="mb-4">
+        Aujourd'hui, nous sommes plus d'une quinzaine de résidents sur place à occuper des casemates autour de thématiques diverses : architecture, scénographie, cinéma, photographie, sculpture, développement durable avec de nouveaux acteurs sur site.
+      </p>
+      <p class="mb-12">
+        Une dynamique se met en place pour aménager l’intérieur du Fort, produire des événements et préfigurer certains programmes du futur projet urbain.
+      </p>
+    </div>
+    <div>
+      <img class="mb-4" src="<%= Routes.static_path(@conn, "/images/about/02.jpg") %>"/>
+      <img src="<%= Routes.static_path(@conn, "/images/about/Atelier.jpg") %>"/>
+    </div>
+  </div>
+  <h2 class="md:text-right font-bold text-2xl md:text-3xl mb-16">
+    <span class="text-3xl md:text-7xl">4.</span> Une diversité de projets contextuels
+  </h2>
+  <div class="photos mb-24">
+    <div class="md:flex">
+      <img src="<%= Routes.static_path(@conn, "/images/about/04.jpg") %>"/>
+      <img src="<%= Routes.static_path(@conn, "/images/about/05.jpg") %>"/>
+      <img src="<%= Routes.static_path(@conn, "/images/about/06.jpg") %>"/>
+      <img src="<%= Routes.static_path(@conn, "/images/about/07.jpg") %>"/>
+      <img src="<%= Routes.static_path(@conn, "/images/about/08.jpg") %>"/>
+    </div>
+  </div>
 </section>

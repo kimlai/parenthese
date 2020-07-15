@@ -38,6 +38,9 @@ h1 {
   padding-bottom: var(--s2);
   line-height: 1.1;
 }
+h2 {
+  line-height: 1.2;
+}
 
 /********
  * LOGO *
@@ -180,9 +183,30 @@ main {
  * ABOUT *
  *********/
 
-#about-content {
-  max-width: 700px;
+#about-content .center {
+  max-width: 65ch;
   margin: 0 auto;
+}
+
+#about-content .side-text {
+  max-width: 65ch;
+}
+
+#about-content .photos {
+  width: 99vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+#about-content .photos > * {
+  max-width: 125rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  #about-content .photos img {
+    max-width: 25%;
+  }
 }
 
 /****************
@@ -369,8 +393,27 @@ main {
 .text-3xl {
   font-size: var(--s4);
 }
+.text-4xl {
+  font-size: var(--s5);
+}
+.text-7xl {
+  font-size: var(--s7);
+}
+.text-2xl {
+  font-size: var(--s2);
+}
 .text-xl {
   font-size: var(--s1);
+}
+@media (min-width: 768px) {
+  .md\:text-3xl {
+    font-size: var(--s4);
+  }
+}
+@media (min-width: 768px) {
+  .md\:text-7xl {
+    font-size: var(--s7);
+  }
 }
 
 .stack\:-4 > * + * {
