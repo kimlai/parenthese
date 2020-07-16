@@ -30,7 +30,7 @@
     <span class="text-3xl md:text-7xl">1.</span> Une entité regroupant des personnalités d'horizons différents
   </h2>
   <div class="mb-24 md:flex items-center">
-    <div class="mb-8 md:mb-0">
+    <div class="side-image mb-8 md:mb-0">
       <img src="<%= Routes.static_path(@conn, "/images/about/01.jpg") %>"/>
     </div>
     <div class="side-text md:px-12">
@@ -83,7 +83,7 @@
         Une dynamique se met en place pour aménager l’intérieur du Fort, produire des événements et préfigurer certains programmes du futur projet urbain.
       </p>
     </div>
-    <div>
+    <div class="side-image">
       <img class="mb-4" src="<%= Routes.static_path(@conn, "/images/about/02.jpg") %>"/>
       <img src="<%= Routes.static_path(@conn, "/images/about/Atelier.jpg") %>"/>
     </div>

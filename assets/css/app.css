@@ -188,8 +188,14 @@ main {
   margin: 0 auto;
 }
 
+#about-content .side-image {
+  flex-grow: 1;
+  flex-basis: 0;
+}
 #about-content .side-text {
   max-width: 65ch;
+  flex-grow: 1;
+  flex-basis: 65ch;
 }
 
 #about-content .photos {
@@ -205,7 +211,7 @@ main {
 
 @media (min-width: 768px) {
   #about-content .photos img {
-    max-width: 25%;
+    max-width: 20%;
   }
 }
 
