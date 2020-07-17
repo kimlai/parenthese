@@ -51,16 +51,26 @@
   <h2 class="md:text-center font-bold text-2xl md:text-3xl mb-16">
     <span class="text-3xl md:text-7xl">2.</span> Deux structures : une association et une société
   </h2>
-  <div class="center">
-  <p class="mb-4">
-    La nature protéiforme du collectif que se soit dans les méthodes de travail ou les typologies de projets a généré deux structures distinctes sous un seul étendard. En fonction de la situation, des valeurs et des objectifs ciblés, nous choisissons de travailler avec l’une ou l’autre des deux structures.
-  </p>
-  <p class="mb-4">
-    L'association à but non lucratif vise à sensibiliser le grand public aux questions de l'architecture et de la fabrique de la ville ainsi que la place de ses usagers. L'apprentissage, le partage et la transmission de connaissances sont l’essence de cette structure, son action se matérialise par le biais de chantiers ouverts, workshops, événements, conférences...
-  </p>
-  <p class="mb-24">
-    La société répond de manière professionnelle et sous plusieurs formes à des projets dans les domaines de l'architecture, l'événementiel, la scénographie et le design d’objet. Dans cette optique l'Atelier propose de concevoir mais aussi réaliser ses projets, offrant un suivi complet tout au long du processus.
-  </p>
+  <div class="mb-24">
+  <div class="structure">
+    <div>
+      <img src="<%= Routes.static_path(@conn, "/images/about/sas.png") %>"/>
+    </div>
+    <div>
+      <p class="mb-4">
+        La nature protéiforme du collectif que se soit dans les méthodes de travail ou les typologies de projets a généré deux structures distinctes sous un seul étendard. En fonction de la situation, des valeurs et des objectifs ciblés, nous choisissons de travailler avec l’une ou l’autre des deux structures.
+      </p>
+      <p class="mb-4">
+        L'association à but non lucratif vise à sensibiliser le grand public aux questions de l'architecture et de la fabrique de la ville ainsi que la place de ses usagers. L'apprentissage, le partage et la transmission de connaissances sont l’essence de cette structure, son action se matérialise par le biais de chantiers ouverts, workshops, événements, conférences...
+      </p>
+      <p class="mb-4">
+        La société répond de manière professionnelle et sous plusieurs formes à des projets dans les domaines de l'architecture, l'événementiel, la scénographie et le design d’objet. Dans cette optique l'Atelier propose de concevoir mais aussi réaliser ses projets, offrant un suivi complet tout au long du processus.
+      </p>
+    </div>
+    <div>
+      <img class="mb-4" src="<%= Routes.static_path(@conn, "/images/about/asso.png") %>"/>
+    </div>
+  </div>
   </div>
   <h2 class="font-bold text-2xl md:text-3xl mb-16">
     <span class="text-3xl md:text-7xl">3.</span> Le Fort d’Aubervilliers : ancrage local et rayonnement proche de la capitale

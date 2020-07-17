@@ -209,6 +209,20 @@ main {
   margin-right: auto;
 }
 
+#about-content .structure {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: calc(var(--s4) / 2 * -1);
+}
+#about-content .structure *:nth-child(2) {
+  max-width: 55ch;
+}
+#about-content .structure > * {
+  margin: calc(var(--s4) / 2);
+}
+
 @media (min-width: 768px) {
   #about-content .photos img {
     max-width: 20%;
