@@ -54,7 +54,7 @@
   <div class="mb-24">
   <div class="structure">
     <div>
-      <img src="<%= Routes.static_path(@conn, "/images/about/sas.png") %>"/>
+      <img class="mb-4" src="<%= Routes.static_path(@conn, "/images/about/asso.png") %>"/>
     </div>
     <div>
       <p class="mb-4">
@@ -68,7 +68,7 @@
       </p>
     </div>
     <div>
-      <img class="mb-4" src="<%= Routes.static_path(@conn, "/images/about/asso.png") %>"/>
+      <img src="<%= Routes.static_path(@conn, "/images/about/sas.png") %>"/>
     </div>
   </div>
   </div>
