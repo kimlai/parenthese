@@ -10,7 +10,7 @@
     "@reach/combobox": "^0.10.4",
     "@reach/menu-button": "^0.10.4",
     "@reach/router": "^1.2.1",
-    "@sentry/browser": "^5.8.0",
+    "@sentry/browser": "^5.22.3",
     "algoliasearch": "^3.35.0",
     "classnames": "^2.2.6",
     "draft-js": "^0.11.1",
