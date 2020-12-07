@@ -17,7 +17,7 @@ const FlickrInput = props => {
         name="project[flickr_id]"
         type="text"
       />
-      <div class="mt-4 col-3 md:col-9 col-gap-0">
+      <div className="mt-4 col-3 md:col-9 col-gap-0">
         {photos.map(photo => (
           <div>
             <img
