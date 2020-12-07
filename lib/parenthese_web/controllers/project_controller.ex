@@ -122,9 +122,13 @@ defmodule ParentheseWeb.ProjectController do
   end
 
   defp parse_location_coordinates(%{"location_coordinates" => coordinates} = params) do
-    [lat, lng] = String.split(coordinates, ",")
+    case String.split(coordinates, ",") do
+      [lat, lng] ->
+        Map.put(params, "location_coordinates", %{lat: String.trim(lat), lng: String.trim(lng)})
 
-    Map.put(params, "location_coordinates", %{lat: String.trim(lat), lng: String.trim(lng)})
+      _ ->
+        params
+    end
   end
 
   defp parse_location_coordinates(params), do: params
