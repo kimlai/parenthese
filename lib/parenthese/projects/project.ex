@@ -2,6 +2,28 @@ defmodule Parenthese.Projects.Project do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @required_attrs [
+    :title,
+    :short_description,
+    :description,
+    :flickr_id,
+    :location,
+    :status,
+    :date,
+    :category,
+    :cover_url
+  ]
+
+  @non_required_attrs [
+    :very_short_description,
+    :youtube_ids,
+    :vimeo_ids,
+    :location_coordinates,
+    :client,
+    :client_website,
+    :budget
+  ]
+
   @derive {Jason.Encoder, except: [:__meta__]}
   schema "projects" do
     field :budget, :string
@@ -27,34 +49,7 @@ defmodule Parenthese.Projects.Project do
   @doc false
   def changeset(project, attrs) do
     project
-    |> cast(attrs, [
-      :title,
-      :very_short_description,
-      :short_description,
-      :description,
-      :flickr_id,
-      :youtube_ids,
-      :vimeo_ids,
-      :location,
-      :location_coordinates,
-      :status,
-      :date,
-      :category,
-      :cover_url,
-      :client,
-      :client_website,
-      :budget
-    ])
-    |> validate_required([
-      :title,
-      :short_description,
-      :description,
-      :flickr_id,
-      :location,
-      :status,
-      :date,
-      :category,
-      :cover_url
-    ])
+    |> cast(attrs, @required_attrs ++ @non_required_attrs)
+    |> validate_required(@required_attrs)
   end
 end
