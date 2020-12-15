@@ -343,12 +343,12 @@ const Form = () => {
           />
           <Error>{errors.location_address}</Error>
 
-          <Label htmlFor="project[location_coordinates]">
+          <Label htmlFor="project[location_coordinates_string]">
             Coordonnées GPS (lat, lng)
           </Label>
           <Input
-            id="location_coordinates"
-            name="project[location_coordinates]"
+            id="location_coordinates_string"
+            name="project[location_coordinates_string]"
             placeholder="( ... , ... )"
             value={
               locationCoordinates

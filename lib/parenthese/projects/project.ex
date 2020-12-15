@@ -18,7 +18,7 @@ defmodule Parenthese.Projects.Project do
     :very_short_description,
     :youtube_ids,
     :vimeo_ids,
-    :location_coordinates,
+    :location_coordinates_string,
     :client,
     :client_website,
     :budget
@@ -33,6 +33,8 @@ defmodule Parenthese.Projects.Project do
     field :description, :string
     field :flickr_id, :string
     field :location, :string
+    # a string formatted as "lat,long"
+    field :location_coordinates_string, :string, virtual: true
     field :location_coordinates, :map
     field :status, :string
     field :title, :string
@@ -51,5 +53,29 @@ defmodule Parenthese.Projects.Project do
     project
     |> cast(attrs, @required_attrs ++ @non_required_attrs)
     |> validate_required(@required_attrs)
+    |> parse_location_coordinates()
+  end
+
+  defp parse_location_coordinates(changeset) do
+    coordinates_string = get_change(changeset, :location_coordinates_string)
+
+    if coordinates_string && changeset.valid? do
+      case String.split(coordinates_string, ",") do
+        [lat, lng] ->
+          put_change(changeset, :location_coordinates, %{
+            lat: String.trim(lat),
+            lng: String.trim(lng)
+          })
+
+        _ ->
+          add_error(
+            changeset,
+            :location_coordinates_string,
+            "Format de coordonnées géographiques non reconnu."
+          )
+      end
+    else
+      changeset
+    end
   end
 end

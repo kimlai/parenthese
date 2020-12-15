@@ -19,7 +19,6 @@ defmodule ParentheseWeb.ProjectController do
   def create(conn, %{"project" => project_params}) do
     project_params =
       project_params
-      |> parse_location_coordinates()
       |> upload_cover
 
     case Projects.create_project(project_params) do
@@ -105,7 +104,6 @@ defmodule ParentheseWeb.ProjectController do
       project_params
       |> Map.put_new("youtube_ids", [])
       |> Map.put_new("vimeo_ids", [])
-      |> parse_location_coordinates()
       |> upload_cover()
 
     project = Projects.get_project!(id)
@@ -120,18 +118,6 @@ defmodule ParentheseWeb.ProjectController do
         |> render("edit.html", project: project, changeset: changeset)
     end
   end
-
-  defp parse_location_coordinates(%{"location_coordinates" => coordinates} = params) do
-    case String.split(coordinates, ",") do
-      [lat, lng] ->
-        Map.put(params, "location_coordinates", %{lat: String.trim(lat), lng: String.trim(lng)})
-
-      _ ->
-        params
-    end
-  end
-
-  defp parse_location_coordinates(params), do: params
 
   defp upload_cover(%{"cover" => %Plug.Upload{} = cover} = project_params) do
     uuid = Ecto.UUID.generate()
