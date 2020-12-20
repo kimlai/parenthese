@@ -4,6 +4,7 @@ defmodule ParentheseWeb.ProjectController do
   require Logger
 
   alias Parenthese.Projects
+  alias Parenthese.Projects.Cover
   alias Parenthese.Projects.Project
 
   def index(conn, _params) do
@@ -17,11 +18,10 @@ defmodule ParentheseWeb.ProjectController do
   end
 
   def create(conn, %{"project" => project_params}) do
-    project_params =
-      project_params
-      |> upload_cover
-
-    case Projects.create_project(project_params) do
+    project_params
+    |> Cover.upload!()
+    |> Projects.create_project()
+    |> case do
       {:ok, project} ->
         redirect(conn, to: Routes.project_path(conn, :show, project))
 
@@ -104,7 +104,7 @@ defmodule ParentheseWeb.ProjectController do
       project_params
       |> Map.put_new("youtube_ids", [])
       |> Map.put_new("vimeo_ids", [])
-      |> upload_cover()
+      |> Cover.upload!()
 
     project = Projects.get_project!(id)
 
@@ -117,45 +117,6 @@ defmodule ParentheseWeb.ProjectController do
         |> put_flash(:error, "La saisie comporte des erreurs. Le projet n'a pas été enregistré.")
         |> render("edit.html", project: project, changeset: changeset)
     end
-  end
-
-  defp upload_cover(%{"cover" => %Plug.Upload{} = cover} = project_params) do
-    uuid = Ecto.UUID.generate()
-    original_path = cover.path
-    thumbnail_path = Path.join(System.tmp_dir!(), "400x400.jpg")
-    make_thumbnail(original_path, thumbnail_path)
-    upload_to_s3!("project-covers/#{uuid}/#{cover.filename}", File.read!(original_path))
-    upload_to_s3!("project-covers/#{uuid}/400x400.jpg", File.read!(thumbnail_path))
-
-    Map.put(
-      project_params,
-      "cover_url",
-      "https://#{System.get_env("S3_BUCKET")}.s3-eu-west-1.amazonaws.com/project-covers/#{uuid}"
-    )
-  end
-
-  defp upload_cover(project_params), do: project_params
-
-  defp make_thumbnail(original_path, thumbnail_path) do
-    System.cmd(
-      "convert",
-      [
-        original_path,
-        "-resize",
-        "400^>",
-        "-gravity",
-        "center",
-        "-crop",
-        "400x400+0+0",
-        "-strip",
-        thumbnail_path
-      ]
-    )
-  end
-
-  defp upload_to_s3!(path, content) do
-    ExAws.S3.put_object(System.get_env("S3_BUCKET"), path, content)
-    |> ExAws.request!()
   end
 
   def delete(conn, %{"id" => id}) do
