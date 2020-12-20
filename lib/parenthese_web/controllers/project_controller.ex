@@ -1,8 +1,7 @@
 defmodule ParentheseWeb.ProjectController do
   use ParentheseWeb, :controller
 
-  require Logger
-
+  alias Parenthese.Flickr
   alias Parenthese.Projects
   alias Parenthese.Projects.Cover
   alias Parenthese.Projects.Project
@@ -35,7 +34,7 @@ defmodule ParentheseWeb.ProjectController do
   def show(conn, %{"id" => id}) do
     project = Projects.get_project!(id)
 
-    photos = fetch_photos(project.flickr_id)
+    photos = Flickr.album_photos(project.flickr_id)
 
     render(conn, "show.html",
       project: project,
@@ -45,7 +44,7 @@ defmodule ParentheseWeb.ProjectController do
   end
 
   def flickr_photos(conn, %{"flickr_id" => flickr_id}) do
-    case fetch_photos(flickr_id) do
+    case Flickr.album_photos(flickr_id) do
       {:ok, photos} ->
         json(conn, photos)
 
@@ -54,43 +53,6 @@ defmodule ParentheseWeb.ProjectController do
         |> put_status(500)
         |> json(error)
     end
-  end
-
-  defp fetch_photos(flickr_id) do
-    with {:ok, 200, _, client_ref} <- fetch_flickr_album(flickr_id),
-         {:ok, body} <- :hackney.body(client_ref),
-         {:ok, %{"stat" => "ok", "photoset" => photoset}} <- Jason.decode(body) do
-      {:ok, photoset["photo"]}
-    else
-      {:error, _} ->
-        {:error, "Les photos n'ont pas pu être chargées"}
-
-      {:ok, %{"stat" => "fail", "message" => message}} ->
-        Logger.error("""
-          Failed to fetch Flickr album #{flickr_id}
-          Error message: #{message}
-        """)
-
-        {:error, "Les photos n'ont pas pu être chargées"}
-    end
-  end
-
-  defp fetch_flickr_album(id) do
-    params = [
-      api_key: System.get_env("FLICKR_API_KEY"),
-      method: "flickr.photosets.getPhotos",
-      photoset_id: id,
-      format: "json",
-      nojsoncallback: 1
-    ]
-
-    :hackney.request(
-      :get,
-      "https://api.flickr.com/services/rest?#{URI.encode_query(params)}",
-      [],
-      "",
-      follow_redirect: true
-    )
   end
 
   def edit(conn, %{"id" => id}) do
