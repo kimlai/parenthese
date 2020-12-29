@@ -8,20 +8,26 @@ defmodule Parenthese.Projects do
 
   alias Parenthese.Projects.Project
 
+  def all_projects() do
+    Project
+    |> order_by(desc: :id)
+    |> Repo.all()
+  end
+
   @doc """
-  Returns the list of projects.
+  Returns a list of published projects for a given category.
 
   ## Examples
 
-      iex> list_projects("archi")
+      iex> published_projects("archi")
       [%Project{}, ...]
 
   """
-  def list_projects() do
-    list_projects(nil)
+  def published_projects() do
+    published_projects(nil)
   end
 
-  def list_projects(category) do
+  def published_projects(category) do
     query =
       if category != nil do
         Project |> where([p], p.category == ^category)
@@ -30,6 +36,7 @@ defmodule Parenthese.Projects do
       end
 
     query
+    |> where([p], p.published == true)
     |> order_by(desc: :id)
     |> Repo.all()
   end

@@ -7,7 +7,7 @@ defmodule ParentheseWeb.ProjectController do
   alias Parenthese.Projects.Project
 
   def index(conn, _params) do
-    projects = Projects.list_projects()
+    projects = Projects.all_projects()
     render(conn, "index.html", projects: projects)
   end
 

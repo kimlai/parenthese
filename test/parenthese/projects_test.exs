@@ -17,7 +17,8 @@ defmodule Parenthese.ProjectsTest do
       short_description: "some short description",
       title: "some title",
       vimeo_ids: [],
-      youtube_ids: []
+      youtube_ids: [],
+      published: true
     }
     @update_attrs %{
       category: "scenography",
@@ -52,9 +53,9 @@ defmodule Parenthese.ProjectsTest do
       project
     end
 
-    test "list_projects/0 returns all projects" do
+    test "published_projects/0 returns all projects" do
       project = project_fixture()
-      assert Projects.list_projects() == [project]
+      assert Projects.published_projects() == [project]
     end
 
     test "get_project!/1 returns the project with given id" do

@@ -442,6 +442,26 @@ const Form = () => {
           <Error>{errors.flickr_id}</Error>
         </div>
       </div>
+      <div className="mt-16 mb-8">
+        <input
+          id="published"
+          name="project[published]"
+          type="checkbox"
+          defaultChecked={changes[changes.published] || project.published}
+          value="true"
+        />
+        <label
+          className="ml-2 mb-1 text-sm text-gray-700 font-semibold pt-1"
+          htmlFor="published"
+        >
+          Publié
+        </label>
+        <span className="font-normal text-gray-700 ml-2">
+          tant que le project n'est pas publié il restera à l'état de brouillon
+          et n'apparîtra pas sur le site.
+        </span>
+        <Error>{errors.published}</Error>
+      </div>
       <a
         href="/admin"
         className=" uppercase text-teal-600 hover:text-teal-400 px-5 py-3 font-bold mr-4"
@@ -452,7 +472,7 @@ const Form = () => {
         className=" uppercase bg-teal-600 hover:bg-teal-400 rounded px-5 py-3 text-white font-bold"
         type="submit"
       >
-        Valider
+        Sauvegarder
       </button>
     </form>
   );

@@ -10,7 +10,7 @@ defmodule ParentheseWeb.PageController do
     projects =
       params
       |> Map.get("category")
-      |> Projects.list_projects()
+      |> Projects.published_projects()
 
     render(conn, "index.html", projects: projects)
   end
@@ -30,7 +30,7 @@ defmodule ParentheseWeb.PageController do
 
   def map(conn, _params) do
     projects =
-      Projects.list_projects()
+      Projects.published_projects()
       |> Enum.map(fn project -> Map.update!(project, :description, &RichText.from_draftjs/1) end)
       |> Enum.filter(fn project -> project.location_coordinates != nil end)
 

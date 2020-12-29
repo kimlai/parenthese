@@ -21,7 +21,8 @@ defmodule Parenthese.Projects.Project do
     :location_coordinates_string,
     :client,
     :client_website,
-    :budget
+    :budget,
+    :published
   ]
 
   @derive {Jason.Encoder, except: [:__meta__]}
@@ -44,6 +45,7 @@ defmodule Parenthese.Projects.Project do
     field :cover_url
     field :client
     field :client_website
+    field :published, :boolean, default: false
 
     timestamps()
   end
