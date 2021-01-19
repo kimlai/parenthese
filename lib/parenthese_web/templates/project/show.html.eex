@@ -41,8 +41,8 @@
       <%= to_html(@project.description) %>
     </div>
     <div class="text-center">
-      <button class="text-orange-500 font-semibold text-sm uppercase" id="more" type="button">+ d'infos</button>
-      <button class="text-orange-500 font-semibold text-sm uppercase hidden" id="less" type="button">Voir moins</button>
+      <button class="text-orange-500 font-semibold text-sm uppercase mt-4" id="more" type="button">+ d'infos</button>
+      <button class="text-orange-500 font-semibold text-sm uppercase hidden mt-4" id="less" type="button">Voir moins</button>
     </div>
   </div>
   <div class="project-details--annexes">
