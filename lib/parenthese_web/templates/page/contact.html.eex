@@ -1,16 +1,24 @@
 <section>
-  <p class="text-xl md:text-4xl py-16 text-center">
-    collectifparenthese@gmail.com
-  </p>
-  <ul class="flex justify-center">
-    <li>
-      <a data-ignore-navigation class="px-4" href="https://www.facebook.com/collectifparenthese">Facebook</a>
-    </li>
-    <li>
-      <a data-ignore-navigation class="px-4" href="https://vimeo.com/collectifparenthese">Vimeo</a>
-    </li>
-    <li>
-      <a data-ignore-navigation class="px-4" href="https://www.flickr.com/photos/collectifparenthese/sets/">Flickr</a>
-    </li>
-  </ul>
+  <div class="text-xl md:text-4xl py-16 flex flex-col items-center">
+    <address>
+      <div class="py-6">collectifparenthese@gmail.com</div>
+      <div>Fort d'Aubervilliers</div>
+      <div>172 avenue Jean Jaurès</div>
+      <div>93300 Aubervilliers</div>
+      <div class="py-6">
+        <a href="tel:+33148303302">01&nbsp;48&nbsp;30&nbsp;33&nbsp;02</a>
+      </div>
+    </address>
+    <ul class="flex py-16">
+      <li>
+        <a data-ignore-navigation class="pr-4" href="https://www.facebook.com/collectifparenthese">Facebook</a>
+      </li>
+      <li>
+        <a data-ignore-navigation class="px-4" href="https://vimeo.com/collectifparenthese">Vimeo</a>
+      </li>
+      <li>
+        <a data-ignore-navigation class="px-4" href="https://www.flickr.com/photos/collectifparenthese/sets/">Flickr</a>
+      </li>
+    </ul>
+  </div>
 </section>
