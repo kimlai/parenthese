@@ -13,14 +13,14 @@
 </ul>
 <section>
   <ul id="project-list" class="text-sm">
-    <%= for project <- @projects do %>
+    <%= for {project, i} <- Enum.with_index(@projects) do %>
       <li
         data-project-category="<%= project.category %>"
         class="project stack:-4"
       >
         <div class="relative bg-gray-300 pb-full img-wrapper">
-          <img
-            loading="lazy"
+        <img
+            <%= if i > 4 do %>loading="lazy"<% end %>
             class="w-full h-full absolute inset-0 object-cover border-2 border-gray-900"
             src="<%= project.cover_url %>/400x400.jpg"
             alt=""
