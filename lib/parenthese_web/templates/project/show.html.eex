@@ -59,9 +59,12 @@
   <%= case @photos do %>
     <% {:ok, photos} -> %>
       <ul class="project-details--photos">
-        <%= for photo <- photos do %>
+        <%= for {photo, i} <- Enum.with_index(photos) do %>
           <li>
-            <img loading="lazy" src="<%= flickr_url(photo) %>" alt="" />
+            <img
+              <%= if i > 0 do %>loading="lazy"<% end %>
+              src="<%= flickr_url(photo) %>" alt=""
+            />
           </li>
         <% end %>
       </ul>
