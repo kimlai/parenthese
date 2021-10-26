@@ -11,7 +11,12 @@ defmodule Parenthese.Flickr do
          {:ok, %{"stat" => "ok", "photoset" => photoset}} <- Jason.decode(body) do
       {:ok, photoset["photo"]}
     else
-      {:error, _} ->
+      {:error, error} ->
+        Logger.error("""
+          Failed to fetch Flickr album #{flickr_id}
+          Error message: #{error}
+        """)
+
         {:error, "Les photos n'ont pas pu être chargées"}
 
       {:ok, %{"stat" => "fail", "message" => message}} ->
