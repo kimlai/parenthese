@@ -5,6 +5,10 @@ const navigate = () => {
   removeClass(document.body, "content-loaded");
   addClass(document.body, "content-loading");
   addClass(document.body, "logo-loading");
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 };
 
 const startNavigation = () => {
