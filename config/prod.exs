@@ -17,6 +17,10 @@ config :parenthese, ParentheseWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+# Fix some Heroku problem when upgrading to OTP 26
+config :parenthese, Parenthese.Repo,
+  ssl_opts: [verify: :verify_none]
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
