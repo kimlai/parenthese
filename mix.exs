@@ -33,10 +33,10 @@ defmodule Parenthese.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.4.9"},
-      {:phoenix_pubsub, "~> 1.1"},
+      {:phoenix, "~> 1.5.14"},
+      {:phoenix_pubsub, "~> 2.1"},
       {:phoenix_ecto, "~> 4.0"},
-      {:ecto_sql, "~> 3.1"},
+      {:ecto_sql, "~> 3.10"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
@@ -45,7 +45,7 @@ defmodule Parenthese.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:ex_aws, "~> 2.1"},
       {:ex_aws_s3, "~> 2.0"},
-      {:hackney, "~> 1.9"},
+      {:hackney, "~> 1.20"},
       {:sweet_xml, "~> 0.6"},
       {:basic_auth, "~> 2.2.2"},
       {:sqlitex, "~>1.7.0", only: [:dev]}
